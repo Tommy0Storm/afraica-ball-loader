@@ -35,6 +35,13 @@
       visibility: visible !important;
       animation: none !important;
     }
+    /* CRITICAL: Override transparent text from hero.css */
+    .hero__title-highlight {
+      color: #C8102E !important;
+      -webkit-text-fill-color: #C8102E !important;
+      background-clip: initial !important;
+      -webkit-background-clip: initial !important;
+    }
   </style>
 
   <!-- CSS -->
@@ -131,7 +138,13 @@
       visibility: visible !important;
       position: relative !important;
       z-index: 3 !important; /* Lower z-index to allow red animation to show through */
-      padding-top: 120px !important; /* Add padding to clear fixed header */
+      padding-top: 180px !important; /* Increased padding for larger logo header */
+    }
+
+    /* Ensure hero section has proper spacing from header */
+    .hero {
+      padding-top: 2rem !important; /* Additional padding for hero content */
+      min-height: calc(100vh - 180px) !important; /* Adjust for header height */
     }
     
     .container {
@@ -216,6 +229,12 @@
       z-index: 10 !important;
       animation: none !important; /* Disable any fade animations */
       transform: none !important; /* Remove any transforms that might hide text */
+
+      /* CRITICAL: Override the transparent text from hero.css */
+      -webkit-text-fill-color: #C8102E !important;
+      background-clip: initial !important;
+      -webkit-background-clip: initial !important;
+      background: transparent !important;
     }
 
     /* CRITICAL: Override animations.css to force hero title visibility immediately */
