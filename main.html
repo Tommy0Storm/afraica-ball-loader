@@ -188,11 +188,16 @@
       color: #C8102E !important; /* Cherry red */
     }
 
-    /* Hero title highlight styling */
+    /* Hero title highlight styling - crisp and clear */
     .hero__title-highlight {
       color: #C8102E !important;
-      text-shadow: 0 0 15px rgba(200, 16, 46, 0.8) !important;
       background-color: transparent !important;
+      text-rendering: optimizeLegibility !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+      font-weight: 600 !important;
+      text-shadow: none !important;
+      filter: none !important;
     }
 
     /* Alternative approach - use CSS custom property override */
@@ -1111,7 +1116,10 @@
       const element = document.querySelector('.hero__title-highlight');
       if (element) {
         element.style.setProperty('color', '#C8102E', 'important');
-        element.style.setProperty('text-shadow', '0 0 15px rgba(200, 16, 46, 0.8)', 'important');
+        element.style.setProperty('text-shadow', 'none', 'important');
+        element.style.setProperty('filter', 'none', 'important');
+        element.style.setProperty('text-rendering', 'optimizeLegibility', 'important');
+        element.style.setProperty('-webkit-font-smoothing', 'antialiased', 'important');
       }
     }
 
