@@ -92,7 +92,7 @@
   <script>
     // Check if already loaded to prevent loader loops
     if (sessionStorage.getItem('afraica-loaded') === 'true') {
-      window.location.replace('https://afraica.co.za/main-page');
+      window.location.replace('https://afraica.co.za');
     }
 
     // Ball loader implementation
@@ -232,7 +232,7 @@
           sessionStorage.setItem('afraica-loaded', 'true');
           loadingText.textContent = 'Welcome to afrAIca';
           setTimeout(() => {
-            window.location.replace('https://afraica.co.za/main-page');
+            window.location.replace('https://afraica.co.za');
           }, 500);
         }
       }
