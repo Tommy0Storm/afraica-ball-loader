@@ -1138,22 +1138,38 @@
   <script>
     function fixRedMovement() {
       const element = document.querySelector('.hero__title-highlight');
-      if (element) {
-        element.style.setProperty('color', '#C8102E', 'important');
-        element.style.setProperty('text-shadow', 'none', 'important');
-        element.style.setProperty('filter', 'none', 'important');
-        element.style.setProperty('backdrop-filter', 'none', 'important');
-        element.style.setProperty('text-rendering', 'optimizeLegibility', 'important');
-        element.style.setProperty('-webkit-font-smoothing', 'antialiased', 'important');
-        element.style.setProperty('opacity', '1', 'important');
-        element.style.setProperty('visibility', 'visible', 'important');
-        element.style.setProperty('display', 'inline', 'important');
-        element.style.setProperty('z-index', '10', 'important');
-        element.style.setProperty('animation', 'none', 'important');
-        element.style.setProperty('transform', 'none', 'important');
+
+      if (!element) {
+        // If element doesn't exist, create it
+        const heroTitle = document.querySelector('.hero__title');
+        if (heroTitle) {
+          // Check if text already contains "A Movement."
+          if (!heroTitle.innerHTML.includes('A Movement.')) {
+            heroTitle.innerHTML = heroTitle.innerHTML.trim() + '<br><span class="hero__title-highlight">A Movement.</span>';
+          }
+        }
+      }
+
+      // Now try to find the element again
+      const highlightElement = document.querySelector('.hero__title-highlight');
+      if (highlightElement) {
+        highlightElement.style.setProperty('color', '#C8102E', 'important');
+        highlightElement.style.setProperty('text-shadow', 'none', 'important');
+        highlightElement.style.setProperty('filter', 'none', 'important');
+        highlightElement.style.setProperty('backdrop-filter', 'none', 'important');
+        highlightElement.style.setProperty('text-rendering', 'optimizeLegibility', 'important');
+        highlightElement.style.setProperty('-webkit-font-smoothing', 'antialiased', 'important');
+        highlightElement.style.setProperty('opacity', '1', 'important');
+        highlightElement.style.setProperty('visibility', 'visible', 'important');
+        highlightElement.style.setProperty('display', 'inline', 'important');
+        highlightElement.style.setProperty('z-index', '10', 'important');
+        highlightElement.style.setProperty('animation', 'none', 'important');
+        highlightElement.style.setProperty('transform', 'none', 'important');
+        highlightElement.style.setProperty('font-size', '1em', 'important');
+        highlightElement.style.setProperty('font-weight', '600', 'important');
 
         // Force remove animation class
-        element.classList.remove('animate-fade-up');
+        highlightElement.classList.remove('animate-fade-up');
       }
 
       // Also fix parent element
