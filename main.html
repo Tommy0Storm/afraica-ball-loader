@@ -199,9 +199,10 @@
       text-shadow: none !important;
       filter: none !important;
       backdrop-filter: none !important;
-      transform: translateZ(0) !important; /* Force hardware acceleration for crisp text */
-      will-change: auto !important;
-      backface-visibility: hidden !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: inline !important;
+      z-index: 10 !important;
     }
 
     /* Ensure parent elements don't blur the highlight text */
@@ -1132,8 +1133,10 @@
         element.style.setProperty('backdrop-filter', 'none', 'important');
         element.style.setProperty('text-rendering', 'optimizeLegibility', 'important');
         element.style.setProperty('-webkit-font-smoothing', 'antialiased', 'important');
-        element.style.setProperty('transform', 'translateZ(0)', 'important');
-        element.style.setProperty('backface-visibility', 'hidden', 'important');
+        element.style.setProperty('opacity', '1', 'important');
+        element.style.setProperty('visibility', 'visible', 'important');
+        element.style.setProperty('display', 'inline', 'important');
+        element.style.setProperty('z-index', '10', 'important');
       }
 
       // Also fix parent element
@@ -1141,6 +1144,8 @@
       if (parentTitle) {
         parentTitle.style.setProperty('filter', 'none', 'important');
         parentTitle.style.setProperty('backdrop-filter', 'none', 'important');
+        parentTitle.style.setProperty('opacity', '1', 'important');
+        parentTitle.style.setProperty('visibility', 'visible', 'important');
       }
     }
 
