@@ -229,52 +229,62 @@
       animate();
     };
 
-    // Mouse interaction - more aggressive and always active
+    // Mouse interaction - wait for DOM and add multiple event listeners
     const addMouseListeners = () => {
-      console.log('Adding mouse listeners to canvas');
+      console.log('Adding mouse listeners to canvas and body');
+      console.log('Canvas element:', canvas);
+      console.log('Canvas parent:', canvas.parentElement);
 
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
+      if (!canvas) {
+        console.error('Canvas element not found!');
+        return;
+      }
 
-        // Convert mouse position to rotation
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const deltaX = (mouse.x - centerX) / centerX;
-        const deltaY = (mouse.y - centerY) / centerY;
+      // Add mouse listeners to multiple elements to ensure detection
+      const addListenersToElement = (element, name) => {
+        console.log(`Adding listeners to ${name}:`, element);
 
-        console.log('Mouse move:', deltaX, deltaY, 'isSpinning:', isSpinning, 'isExploding:', isExploding);
+        element.addEventListener('mousemove', (e) => {
+          const rect = element.getBoundingClientRect();
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const deltaX = (e.clientX - rect.left - centerX) / centerX;
+          const deltaY = (e.clientY - rect.top - centerY) / centerY;
 
-        // Always apply mouse interaction with stronger effect
-        targetRotationY += deltaX * 0.02;
-        targetRotationX += -deltaY * 0.02;
-      });
+          console.log(`Mouse move on ${name}:`, deltaX.toFixed(2), deltaY.toFixed(2));
 
-      canvas.addEventListener('mouseleave', () => {
-        console.log('Mouse left canvas');
-        mouse.x = null;
-        mouse.y = null;
-      });
+          // Apply rotation immediately and visibly
+          targetRotationY = deltaX * 1.5;
+          targetRotationX = -deltaY * 1.5;
+        });
 
-      // Also add to the container div for broader detection
-      const container = canvas.parentElement;
-      container.addEventListener('mousemove', (e) => {
-        const rect = container.getBoundingClientRect();
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const deltaX = (e.clientX - rect.left - centerX) / centerX;
-        const deltaY = (e.clientY - rect.top - centerY) / centerY;
+        element.addEventListener('mouseleave', () => {
+          console.log(`Mouse left ${name}`);
+          // Return to neutral rotation
+          targetRotationY *= 0.8;
+          targetRotationX *= 0.8;
+        });
+      };
 
-        // Apply rotation with stronger effect
-        targetRotationY += deltaX * 0.01;
-        targetRotationX += -deltaY * 0.01;
-      });
+      // Add to canvas
+      addListenersToElement(canvas, 'canvas');
+
+      // Add to container
+      if (canvas.parentElement) {
+        addListenersToElement(canvas.parentElement, 'container');
+      }
+
+      // Add to document body for maximum coverage
+      addListenersToElement(document.body, 'body');
     };
 
     window.addEventListener('resize', handleResize);
     handleResize();
-    addMouseListeners();
+
+    // Add mouse listeners with delay to ensure DOM is ready
+    setTimeout(() => {
+      addMouseListeners();
+    }, 100);
   </script>
 </body>
 </html>
