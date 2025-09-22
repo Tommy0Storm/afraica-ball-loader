@@ -198,6 +198,17 @@
       font-weight: 600 !important;
       text-shadow: none !important;
       filter: none !important;
+      backdrop-filter: none !important;
+      transform: translateZ(0) !important; /* Force hardware acceleration for crisp text */
+      will-change: auto !important;
+      backface-visibility: hidden !important;
+    }
+
+    /* Ensure parent elements don't blur the highlight text */
+    .hero__title {
+      filter: none !important;
+      backdrop-filter: none !important;
+      text-rendering: optimizeLegibility !important;
     }
 
     /* Alternative approach - use CSS custom property override */
@@ -1118,8 +1129,18 @@
         element.style.setProperty('color', '#C8102E', 'important');
         element.style.setProperty('text-shadow', 'none', 'important');
         element.style.setProperty('filter', 'none', 'important');
+        element.style.setProperty('backdrop-filter', 'none', 'important');
         element.style.setProperty('text-rendering', 'optimizeLegibility', 'important');
         element.style.setProperty('-webkit-font-smoothing', 'antialiased', 'important');
+        element.style.setProperty('transform', 'translateZ(0)', 'important');
+        element.style.setProperty('backface-visibility', 'hidden', 'important');
+      }
+
+      // Also fix parent element
+      const parentTitle = document.querySelector('.hero__title');
+      if (parentTitle) {
+        parentTitle.style.setProperty('filter', 'none', 'important');
+        parentTitle.style.setProperty('backdrop-filter', 'none', 'important');
       }
     }
 
