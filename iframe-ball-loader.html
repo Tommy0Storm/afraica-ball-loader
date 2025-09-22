@@ -229,8 +229,10 @@
       animate();
     };
 
-    // Mouse interaction
+    // Mouse interaction - more aggressive and always active
     const addMouseListeners = () => {
+      console.log('Adding mouse listeners to canvas');
+
       canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
@@ -242,21 +244,31 @@
         const deltaX = (mouse.x - centerX) / centerX;
         const deltaY = (mouse.y - centerY) / centerY;
 
-        // Only apply mouse interaction when not spinning or exploding
-        if (!isSpinning && !isExploding) {
-          targetRotationY = deltaX * 0.5;
-          targetRotationX = -deltaY * 0.5;
-        }
+        console.log('Mouse move:', deltaX, deltaY, 'isSpinning:', isSpinning, 'isExploding:', isExploding);
+
+        // Always apply mouse interaction with stronger effect
+        targetRotationY += deltaX * 0.02;
+        targetRotationX += -deltaY * 0.02;
       });
 
       canvas.addEventListener('mouseleave', () => {
+        console.log('Mouse left canvas');
         mouse.x = null;
         mouse.y = null;
-        // Slowly return to neutral position when mouse leaves
-        if (!isSpinning && !isExploding) {
-          targetRotationX = targetRotationX * 0.95;
-          targetRotationY = targetRotationY * 0.95;
-        }
+      });
+
+      // Also add to the container div for broader detection
+      const container = canvas.parentElement;
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = (e.clientX - rect.left - centerX) / centerX;
+        const deltaY = (e.clientY - rect.top - centerY) / centerY;
+
+        // Apply rotation with stronger effect
+        targetRotationY += deltaX * 0.01;
+        targetRotationX += -deltaY * 0.01;
       });
     };
 
