@@ -69,7 +69,7 @@
       const textCtx = textCanvas.getContext('2d');
       const FONT_SIZE = 150;
       textCanvas.width = 1024; textCanvas.height = 256;
-      textCtx.font = \`bold \${FONT_SIZE}px Arial, sans-serif\`;
+      textCtx.font = `bold ${FONT_SIZE}px Arial, sans-serif`;
       textCtx.textAlign = 'center'; textCtx.textBaseline = 'middle';
       const metricsAfr = textCtx.measureText('afr');
       const metricsAI = textCtx.measureText('AI');
@@ -207,11 +207,11 @@
         const opacity = 0.4 + ((p.z + 1) / 2) * 0.6;
         p.radius = ((p.z + 1.5) / 2.5) * 2 + 0.5;
         if (p.color.r > 100 || p.color.g > 100) {
-          ctx.shadowBlur = 15; ctx.shadowColor = \`rgb(\${p.color.r}, \${p.color.g}, \${p.color.b})\`;
+          ctx.shadowBlur = 15; ctx.shadowColor = `rgb(${p.color.r}, ${p.color.g}, ${p.color.b})`;
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = \`rgba(\${p.color.r}, \${p.color.g}, \${p.color.b}, \${opacity})\`;
+        ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${opacity})`;
         ctx.fill();
         ctx.shadowBlur = 0;
       });
