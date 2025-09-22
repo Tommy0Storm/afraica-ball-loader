@@ -51,7 +51,7 @@
       { r: 222, g: 49, b: 99 },
       { r: 75, g: 85, b: 99 }
     ];
-    let rigidity = 1;
+    let rigidity = 0.99;
     let particles = [];
     let rotationX = 0, rotationY = 0;
     let targetRotationX = 0, targetRotationY = 0;
@@ -164,7 +164,7 @@
         const explosionElapsed = (performance.now() - explosionStartTime) / 1000;
         if (explosionElapsed >= EXPLOSION_DURATION) {
           isExploding = false;
-          rigidity = 1;
+          rigidity = 0.99;
           sessionStorage.setItem('afraica-loaded', 'true');
           loadingText.textContent = 'Welcome to afrAIca';
           setTimeout(() => {
@@ -187,7 +187,7 @@
         let y2 = p.baseY3d * cosX - z1 * sinX, z2 = p.baseY3d * sinX + z1 * cosX;
         p.z = z2; p.baseX = x1 * scale + centerX; p.baseY = y2 * scale + centerY;
 
-        if (!isExploding && rigidity >= 1.0) {
+        if (!isExploding && rigidity >= 0.99) {
           p.x = p.baseX; p.y = p.baseY; p.vx = 0; p.vy = 0;
         } else {
           if (isExploding) {
