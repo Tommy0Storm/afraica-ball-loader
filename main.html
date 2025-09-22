@@ -138,13 +138,13 @@
       visibility: visible !important;
       position: relative !important;
       z-index: 3 !important; /* Lower z-index to allow red animation to show through */
-      padding-top: 180px !important; /* Increased padding for larger logo header */
+      padding-top: 400px !important; /* Much larger padding for huge logo header */
     }
 
     /* Ensure hero section has proper spacing from header */
     .hero {
-      padding-top: 2rem !important; /* Additional padding for hero content */
-      min-height: calc(100vh - 180px) !important; /* Adjust for header height */
+      padding-top: 4rem !important; /* More padding for hero content */
+      min-height: calc(100vh - 400px) !important; /* Adjust for larger header height */
     }
     
     .container {
@@ -293,6 +293,9 @@
       z-index: 20 !important;
       display: block !important;
       visibility: visible !important;
+      width: 100% !important;
+      overflow: visible !important; /* Prevent clipping */
+      min-height: 80px !important; /* Ensure minimum height */
     }
 
     /* Navigation menu styling */
@@ -301,16 +304,19 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 0 2rem;
+      padding: 0 1rem; /* Reduced padding to give more space */
+      overflow: visible; /* Ensure content isn't clipped */
     }
 
     .nav__links {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem; /* Slightly reduced gap */
       list-style: none;
       margin: 0;
       padding: 0;
+      flex-wrap: nowrap; /* Prevent wrapping */
+      overflow: visible; /* Ensure buttons aren't clipped */
     }
 
     /* Navigation links */
@@ -345,12 +351,15 @@
       background: linear-gradient(135deg, #C8102E 0%, #AD0F2A 100%);
       color: #FFFFFF;
       border: 2px solid #C8102E;
-      padding: 1rem 2rem;
+      padding: 1rem 2.5rem; /* Increased horizontal padding */
       font-weight: 500;
       border-radius: 12px;
       font-family: 'Google Sans', system-ui, sans-serif;
       box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease;
+      min-width: 140px; /* Ensure minimum width for "Talk to us" */
+      white-space: nowrap; /* Prevent text wrapping */
+      text-align: center;
     }
 
     .btn-primary--small:hover {
