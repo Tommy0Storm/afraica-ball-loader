@@ -80,9 +80,9 @@
     
     /* Premium Brand Sections with Official Colors - Maximum transparency for red animation */
     .section {
-      background-color: rgba(0, 0, 0, 0.05) !important; /* Even more transparent */
+      background-color: rgba(0, 0, 0, 0.1) !important; /* Slightly more opaque for readability */
       position: relative !important;
-      z-index: 10 !important;
+      z-index: 5 !important; /* Lower z-index to not completely cover animation */
       padding: 5rem 0 !important;
     }
     
@@ -119,7 +119,7 @@
       display: block !important;
       visibility: visible !important;
       position: relative !important;
-      z-index: 5 !important;
+      z-index: 3 !important; /* Lower z-index to allow red animation to show through */
       padding-top: 120px !important; /* Add padding to clear fixed header */
     }
     
@@ -210,8 +210,10 @@
 
     /* Enhanced Red Animation Visibility */
     #red-anime-bg {
-      filter: brightness(1.3) contrast(1.2) saturate(1.4) !important;
-      opacity: 0.9 !important;
+      filter: brightness(1.1) contrast(1.05) saturate(1.2) !important;
+      opacity: 0.6 !important;
+      display: block !important;
+      visibility: visible !important;
     }
     
     /* Official Brand Header - Ultra transparent for red animation */
@@ -481,7 +483,7 @@
 <body>
   <!-- EXACT-AS-IS RED ANIMATION (background layer) -->
   <iframe id="red-anime-bg" src="./red-anime.html" title="afrAIca Background Animation - Decorative Visual Effect" aria-label="Background animation for afrAIca website"
-    style="position:fixed;inset:0;border:0;width:100%;height:100%;z-index:1;pointer-events:none;background:#000;opacity:0.8;mix-blend-mode:multiply"></iframe>
+    style="position:fixed;inset:0;border:0;width:100%;height:100%;z-index:1;pointer-events:none;background:#000;opacity:0.6"></iframe>
 
   <!-- Loading Screen Container removed - was blocking clicks -->
 
