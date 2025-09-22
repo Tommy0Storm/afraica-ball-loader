@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="afrAIca - Africa's Executive AI Intelligence Infrastructure. Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms.">
+  <meta name="keywords" content="AI, Africa, artificial intelligence, executive, infrastructure, sovereign">
+  <meta name="author" content="afrAIca PTY LTD">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="afrAIca - Africa's Executive AI Intelligence">
+  <meta property="og:description" content="Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms for leaders building durable advantage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afraica.co.za">
+  <meta property="og:image" content="./assets/images/afrAIca-text.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/images/afrAIca-small.png" type="image/png">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://use.typekit.net/canvas-sans.css" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles/base/tokens.css">
+  <link rel="stylesheet" href="./styles/base/reset.css">
+  <link rel="stylesheet" href="./styles/layout/grid.css">
+  <link rel="stylesheet" href="./styles/components/buttons.css">
+  <link rel="stylesheet" href="./styles/components/cards.css">
+  <link rel="stylesheet" href="./styles/components/navigation.css">
+  <link rel="stylesheet" href="./styles/components/stellar-loader.css">
+  <link rel="stylesheet" href="./styles/components/forms.css">
+  <link rel="stylesheet" href="./styles/layout/header.css">
+  <link rel="stylesheet" href="./styles/layout/hero.css">
+  <link rel="stylesheet" href="./styles/layout/sections.css">
+  <link rel="stylesheet" href="./styles/utilities/animations.css">
+  <link rel="stylesheet" href="./styles/main.css">
+  
+  <title>afrAIca — Africa's Executive AI Intelligence</title>
+</head>
+<body>
+  <!-- Loading Screen Container (continent loader populates) -->
+  <div id="loading-screen"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="nav__logo">
+          <img src="./assets/images/afrAIca-text.png" alt="afrAIca" class="nav__logo-img">
+        </a>
+        
+        <ul class="nav__links hidden-mobile">
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#business-model" class="nav__link">Business Model</a></li>
+          <li><a href="#promise" class="nav__link">Our Promise</a></li>
+          <li><a href="#solutions" class="nav__link">Solutions</a></li>
+          <li><a href="#contact" class="nav__link btn-primary btn-primary--small">Talk to us</a></li>
+        </ul>
+        
+        <!-- Mobile menu button -->
+        <button class="nav__toggle hidden-desktop" id="nav-toggle">
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+        
+        <!-- Mobile menu -->
+        <div class="nav__mobile hidden-desktop" id="nav-mobile">
+          <ul class="nav__mobile-links">
+            <li><a href="#about" class="nav__mobile-link">About</a></li>
+            <li><a href="#business-model" class="nav__mobile-link">Business Model</a></li>
+            <li><a href="#promise" class="nav__mobile-link">Our Promise</a></li>
+            <li><a href="#solutions" class="nav__mobile-link">Solutions</a></li>
+            <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero__background">
+        <div class="hero__mesh"></div>
+        <div class="hero__particles" id="particles"></div>
+      </div>
+      
+      <div class="container">
+        <div class="hero__content">
+          <span class="hero__badge animate-fade-up">EXECUTIVE AI INFRASTRUCTURE</span>
+          <h1 class="hero__title animate-fade-up">
+            Not Just Another Tech Holding Company.
+            <span class="hero__title-highlight">A Movement.</span>
+          </h1>
+          <p class="hero__description animate-fade-up">
+            afrAIca is more than a brand, it's a blueprint for AI on the continent. 
+            Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms 
+            for leaders building durable advantage.
+          </p>
+          <div class="hero__cta animate-fade-up">
+            <a href="#about" class="btn-primary btn-primary--large">Explore Our Vision</a>
+            <a href="#contact" class="btn-secondary btn-secondary--large">Start Conversation</a>
+          </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="hero__scroll">
+          <div class="scroll-indicator">
+            <span class="scroll-text">Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">About afrAIca</h2>
+          <p class="section__description animate-fade-up">
+            We're a holding company designed to birth, back, and bolster high-impact ventures 
+            across the African AI value chain.
+          </p>
+        </div>
+        
+        <div class="grid grid--2">
+          <div class="about__content animate-fade-up">
+            <p>
+              Our ecosystem is engineered to address Africa's biggest AI frustrations, 
+              focusing on the skills vacuum and delivering true African transformation.
+            </p>
+            <p>
+              Our first-born, <strong>mzAInsi</strong>, is already rolling out intelligent 
+              strategy and development services across industries. And trust us, she won't be the last.
+            </p>
+          </div>
+          
+          <div class="about__logos animate-fade-up">
+            <div class="logo-grid">
+              <div class="logo-item">
+                <img src="./assets/images/mzainsi.png" alt="mzAInsi" class="logo-item__image">
+                <span class="logo-item__label">Strategy & Development</span>
+              </div>
+              <div class="logo-item logo-item--coming-soon">
+                <img src="./assets/images/ai-assessment.png" alt="AI Assessment" class="logo-item__image">
+                <span class="logo-item__label">AI Assessment <span class="badge badge--small">Coming Soon</span></span>
+              </div>
+              <div class="logo-item logo-item--coming-soon">
+                <img src="./assets/images/afraica-vision.png" alt="afrAIca Vision" class="logo-item__image">
+                <span class="logo-item__label">Transformation APP <span class="badge badge--small">60% Complete</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section id="business-model" class="section section--dark">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Our Business Model</h2>
+        </div>
+        
+        <div class="business-model__content animate-fade-up">
+          <p>
+            At afrAIca, we don't just join the AI conversation, we moderate it. Think of us as your 
+            organisation's <strong>AI Ombudsman</strong>: impartial, honest, and deeply invested in the outcome. 
+            We aren't here to flog hardware or push pre-packed platforms. In fact, we don't sell GPUs or servers, 
+            we unlock their potential. Our value lies not in the infrastructure itself, but in what you can do with it. 
+            That's why our model focuses on <strong>capability, not components</strong>.
+          </p>
+          <p>
+            AI transformation, when done right, shouldn't feel like a software upgrade, it should feel like a 
+            <strong>cultural shift</strong>. That's where we come in. afrAIca helps businesses evolve from legacy 
+            operations to insight-driven powerhouses. But we don't stop at fixing what exists. We proactively 
+            design and build new applications that reimagine what's possible for industries, governments, and 
+            communities across the continent. These aren't vanity apps. These are <strong>continental game-changers</strong>.
+          </p>
+          <p>
+            And we don't believe in generic AI solutions built in labs thousands of kilometers away. Your business 
+            has its own challenges, context, and, most importantly, its own data. So we use your data to build your 
+            product. <strong>Custom. Local. Powerful.</strong> That's not just transformation. That's ownership.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section id="promise" class="section">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Our Promise</h2>
+          <p class="section__description animate-fade-up">
+            At afrAIca, our promise is more than just a marketing line, it's a commitment stitched into 
+            the fabric of everything we do.
+          </p>
+        </div>
+        
+        <div class="promise__grid">
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Transform Africa</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to transform Africa from the grassroots up, not just by bringing AI to the continent, 
+                but by building it here, with local hands, local knowledge, and local ambition.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Empower Enterprises</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to transform African enterprises by helping them not only adopt AI but truly own it. 
+                Whether you're a pan-African telco or a family-run business with big dreams.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Protect Your Data</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to keep your data safe. Always. Your information will never be treated as a commodity. 
+                We believe data is sovereignty, and we respect it as such.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Best Practices</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to keep to best practices. That means aligning with global standards, implementing 
+                proven frameworks, and continuously improving how we build, deploy, and manage AI.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Ethical AI</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to deliver ethical and responsible AI. We don't build black boxes. We build systems 
+                that are explainable, fair, and human-centred.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="section section--dark">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Coming Soon</h2>
+          <p class="section__description animate-fade-up">
+            Revolutionary AI solutions in development to accelerate Africa's transformation.
+          </p>
+        </div>
+        
+        <div class="solutions__grid">
+          <div class="card card--featured animate-fade-up">
+            <div class="card__badge card__badge--progress">In Development</div>
+            <div class="card__header">
+              <img src="./assets/images/ai-assessment.png" alt="AI Assessment" class="card__icon">
+              <h3 class="card__title">Budget Liberation Tool</h3>
+              <p class="card__subtitle">Mechanism for freeing up budget for AI, proven to work</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                A revolutionary approach to identifying and reallocating existing resources to fund AI initiatives 
+                without additional capital requirements.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__badge card__badge--progress">80% Complete</div>
+            <div class="card__header">
+              <img src="./assets/images/afraica-vision.png" alt="Legal AI" class="card__icon">
+              <h3 class="card__title">Legal AI Application</h3>
+              <p class="card__subtitle">Intelligent legal analysis and document processing</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Advanced AI-powered legal research, contract analysis, and compliance monitoring specifically 
+                designed for African legal frameworks.
+              </p>
+              <div class="card__progress">
+                <div class="progress-bar">
+                  <div class="progress-bar__fill" style="width: 80%;"></div>
+                </div>
+                <div class="progress-text">80% Complete</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__badge card__badge--progress">60% Complete</div>
+            <div class="card__header">
+              <img src="./assets/images/northen-star.png" alt="Transformation AI" class="card__icon">
+              <h3 class="card__title">Transformation AI</h3>
+              <p class="card__subtitle">Enterprise-wide AI transformation platform</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Comprehensive platform for planning, implementing, and managing AI transformation across 
+                large-scale African enterprises.
+              </p>
+              <div class="card__progress">
+                <div class="progress-bar">
+                  <div class="progress-bar__fill" style="width: 60%;"></div>
+                </div>
+                <div class="progress-text">60% Complete</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section--featured">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Let's Transform Together</h2>
+          <p class="section__description animate-fade-up">
+            We want to hear from you. Ready to join Africa's AI transformation movement?
+          </p>
+        </div>
+        
+        <div class="contact__content">
+          <div class="grid grid--2">
+            <div class="card card--glass animate-fade-up">
+              <div class="card__header">
+                <h3 class="card__title">Investor Relations</h3>
+              </div>
+              <div class="card__content">
+                <p class="card__description">
+                  Interested in backing Africa's AI future? Let's discuss investment opportunities and partnership possibilities.
+                </p>
+                <a href="mailto:progress@afraica.co.za" class="btn-primary">progress@afraica.co.za</a>
+              </div>
+            </div>
+            
+            <div class="card card--glass animate-fade-up">
+              <div class="card__header">
+                <h3 class="card__title">General Inquiries</h3>
+              </div>
+              <div class="card__content">
+                <p class="card__description">
+                  Questions about our services, partnerships, or how we can help transform your organization?
+                </p>
+                <a href="mailto:kudzikama@afraica.co.za" class="btn-primary">kudzikama@afraica.co.za</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-12 animate-fade-up">
+            <a href="https://afraica.co.za/code-of-ethics" class="btn-outline" target="_blank">View Our Code of Ethics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>&copy; 2025 afrAIca PTY LTD. All rights reserved.</p>
+        <a href="https://afraica.co.za/code-of-ethics" class="footer__link">Code of Ethics</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./scripts/main.js?v=20250918120000"></script>
+</body>
+</html>

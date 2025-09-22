@@ -1,0 +1,392 @@
+/* =============================================================================
+   Sections Layout - afrAIca Premium
+   ============================================================================= */
+
+.section {
+  position: relative;
+  padding: var(--space-20) 0;
+  overflow: hidden;
+}
+
+.section--large {
+  padding: var(--space-32) 0;
+}
+
+.section--small {
+  padding: var(--space-16) 0;
+}
+
+.section--dark {
+  background: var(--color-gray-900);
+  position: relative;
+}
+
+.section--dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent; /* REMOVED ALL RADIAL GRADIENTS AND DOTS */
+  pointer-events: none;
+}
+
+.section--featured {
+  /* Use transparent to let the pure black page background show through (avoid bluish gray tint) */
+  background: transparent;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Section headers */
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+  position: relative;
+  z-index: var(--z-default);
+}
+
+.section__title {
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  font-weight: var(--font-extrabold);
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.section__subtitle {
+  font-size: var(--text-xl);
+  color: var(--color-cherry);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.section__description {
+  font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
+  color: var(--color-gray-300);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+  font-weight: var(--font-light);
+}
+
+/* Content layouts */
+.section__content {
+  position: relative;
+  z-index: var(--z-default);
+}
+
+.section__grid {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.section__grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.section__grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.section__grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* About section specific */
+.about__content {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-gray-300);
+  font-weight: var(--font-light);
+}
+
+.about__content p {
+  margin-bottom: var(--space-6);
+}
+
+.about__content strong {
+  color: var(--color-cherry);
+  font-weight: var(--font-semibold);
+}
+
+.about__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6);
+
+  /* Enhanced background for better image contrast */
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%),
+    var(--glass-white);
+
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+
+  /* Add subtle inner glow for image enhancement */
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.1),
+    var(--shadow-elevated);
+}
+
+.logo-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-cherry);
+
+  /* Enhanced hover background for maximum image visibility */
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%),
+    var(--glass-strong);
+
+  box-shadow:
+    inset 0 0 30px rgba(255, 255, 255, 0.2),
+    var(--shadow-premium),
+    0 0 20px rgba(200, 16, 46, 0.3);
+}
+
+.logo-item__image {
+  width: 320px; /* 4x */
+  height: 320px; /* 4x */
+  object-fit: contain;
+  margin-bottom: var(--space-4);
+  transition: all var(--transition-base);
+
+  /* Advanced image enhancement for visibility against dark backgrounds */
+  filter:
+    brightness(1.8)           /* Increase overall brightness */
+    contrast(1.4)             /* Boost contrast for sharper details */
+    saturate(1.2)             /* Slightly enhance colors */
+    sepia(0.1)                /* Add subtle warmth */
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))  /* White glow for separation */
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));      /* Dark shadow for depth */
+
+  /* Additional techniques for maximum visibility */
+  mix-blend-mode: screen;     /* Screen blend mode for better visibility on dark */
+  opacity: 0.95;              /* Slight transparency for natural look */
+
+  /* Backup background for extreme cases */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2);
+}
+
+.logo-item:hover .logo-item__image {
+  transform: scale(1.1);
+
+  /* Enhanced visibility on hover */
+  filter:
+    brightness(2.0)           /* Even brighter on hover */
+    contrast(1.6)             /* Higher contrast */
+    saturate(1.4)             /* More vivid colors */
+    sepia(0.05)               /* Less sepia for cleaner look */
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.5))  /* Stronger white glow */
+    drop-shadow(0 6px 20px rgba(0, 0, 0, 0.7));      /* Deeper shadow */
+
+  /* Stronger screen blend on hover */
+  mix-blend-mode: screen;
+  opacity: 1;
+}
+
+.logo-item__label {
+  font-size: var(--text-sm);
+  color: var(--color-gray-300);
+  font-weight: var(--font-light);
+}
+
+.logo-item--coming-soon {
+  opacity: 0.8;
+}
+
+.logo-item--coming-soon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+/* Badge component */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-cherry);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-left: var(--space-2);
+}
+
+.badge--small {
+  padding: 2px var(--space-2);
+  font-size: 10px;
+}
+
+.badge--secondary {
+  background: var(--color-gray-600);
+  color: var(--color-gray-200);
+}
+
+.badge--success {
+  background: #10B981;
+  color: var(--color-white);
+}
+
+.badge--warning {
+  background: #F59E0B;
+  color: var(--color-white);
+}
+
+/* Business model section */
+.business-model__content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-gray-300);
+  font-weight: var(--font-light);
+}
+
+.business-model__content p {
+  margin-bottom: var(--space-6);
+}
+
+/* Promise section */
+.promise__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+/* Solutions section */
+.solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+/* Contact section */
+.contact__content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background: var(--color-dark);
+  border-top: 1px solid var(--glass-border);
+  padding: var(--space-12) 0;
+  text-align: center;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-gray-400);
+  font-size: var(--text-sm);
+}
+
+.footer__link {
+  color: var(--color-cherry);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--color-cherry-400);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .section__grid--3,
+  .section__grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+  
+  .section--large {
+    padding: var(--space-20) 0;
+  }
+  
+  .section__header {
+    margin-bottom: var(--space-12);
+  }
+  
+  .section__grid,
+  .section__grid--2,
+  .section__grid--3,
+  .section__grid--4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .logo-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  /* Downscale enlarged logos on mobile */
+  .logo-item__image { width: 200px; height: 200px; }
+  
+  .footer__content {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--space-12) 0;
+  }
+  
+  .section__header {
+    margin-bottom: var(--space-8);
+  }
+}

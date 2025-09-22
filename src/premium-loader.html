@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>afrAIca Loading</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- GSAP for elegant animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #030712;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      cursor: grab;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body:active {
+      cursor: grabbing;
+    }
+
+    #loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #030712;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease-out;
+    }
+
+    #loading-container.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .logo-text {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-family: 'Google Sans', system-ui, sans-serif;
+      font-size: 12rem;
+      font-weight: 400;
+      text-align: center;
+      z-index: 2;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-ai {
+      color: #C8102E;
+      font-weight: 500;
+    }
+
+    .loading-text {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-family: 'Google Sans', system-ui, sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      text-align: center;
+      z-index: 2;
+      opacity: 0.8;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .loading-text .highlight {
+      color: #C8102E;
+      font-weight: 500;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .loading-progress {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 1px;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .loading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #C8102E 0%, #ffffff 50%, #C8102E 100%);
+      border-radius: 1px;
+      width: 0%;
+      transition: width 15s linear;
+      box-shadow: 0 0 10px rgba(200, 16, 46, 0.5);
+      position: relative;
+    }
+
+    .loading-progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+      animation: progressShine 2s ease-in-out infinite;
+    }
+
+    /* Elegant tactical enhancements */
+    .tactical-enhancement {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .subtle-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(200, 16, 46, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 16, 46, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: gridGlow 8s ease-in-out infinite;
+    }
+
+    .corner-elements {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(200, 16, 46, 0.2);
+      opacity: 0;
+    }
+
+    .corner-tl {
+      top: 5%;
+      left: 5%;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .corner-tr {
+      top: 5%;
+      right: 5%;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .corner-bl {
+      bottom: 5%;
+      left: 5%;
+      border-right: none;
+      border-top: none;
+    }
+
+    .corner-br {
+      bottom: 5%;
+      right: 5%;
+      border-left: none;
+      border-top: none;
+    }
+
+    .status-indicator {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      color: rgba(200, 16, 46, 0.8);
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      text-align: right;
+      line-height: 1.4;
+      opacity: 0;
+    }
+
+    .ai-pulse {
+      text-shadow: 0 0 10px rgba(200, 16, 46, 0.5);
+      animation: aiGlow 3s ease-in-out infinite;
+    }
+
+    /* Skip Button */
+    .skip-button {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      background: rgba(200, 16, 46, 0.15);
+      border: 2px solid rgba(200, 16, 46, 0.5);
+      color: #C8102E;
+      padding: 1rem 2rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(15px);
+      z-index: 10;
+      opacity: 0;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px rgba(200, 16, 46, 0.6);
+      box-shadow: 0 0 15px rgba(200, 16, 46, 0.2);
+    }
+
+    .skip-button:hover {
+      background: rgba(200, 16, 46, 0.25);
+      border-color: rgba(200, 16, 46, 0.8);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(200, 16, 46, 0.4);
+      text-shadow: 0 0 12px rgba(200, 16, 46, 0.8);
+    }
+
+    .skip-button:active {
+      transform: translateY(0);
+    }
+
+    @keyframes progressShine {
+      0% { transform: translateX(-20px); }
+      100% { transform: translateX(320px); }
+    }
+
+    @keyframes gridGlow {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes aiGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(200, 16, 46, 0.5);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(200, 16, 46, 0.8), 0 0 30px rgba(200, 16, 46, 0.4);
+      }
+    }
+
+    @keyframes fadeInCorners {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .logo-text {
+        font-size: 9rem;
+        top: 10%;
+      }
+
+      .loading-text {
+        font-size: 1rem;
+        bottom: 15%;
+      }
+
+      .loading-progress {
+        width: 250px;
+        bottom: 10%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 7.5rem;
+        top: 12%;
+      }
+
+      .loading-text {
+        font-size: 0.9rem;
+        bottom: 20%;
+      }
+
+      .loading-progress {
+        width: 200px;
+        bottom: 15%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-container">
+    <!-- Elegant tactical background enhancements -->
+    <div class="tactical-enhancement">
+      <div class="subtle-grid"></div>
+      <div class="corner-elements corner-tl"></div>
+      <div class="corner-elements corner-tr"></div>
+      <div class="corner-elements corner-bl"></div>
+      <div class="corner-elements corner-br"></div>
+    </div>
+
+    <!-- Skip Button -->
+    <button class="skip-button" id="skip-button">Skip Intro</button>
+
+    <!-- Status indicator -->
+    <div class="status-indicator" id="status-indicator">
+      <div>SYS: READY</div>
+      <div>NET: SECURE</div>
+      <div>AI: ACTIVE</div>
+    </div>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="logo-text">
+      afr<span class="logo-ai ai-pulse">AI</span>ca
+    </div>
+
+    <div class="loading-text">
+      Welcome to afr<span class="highlight ai-pulse">AI</span>ca
+    </div>
+
+    <div class="loading-progress">
+      <div class="loading-progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeLoadingBall } from './components/ball-loader.js';
+
+    let loadingBallCleanup = null;
+    let loadingTimeout = null;
+
+    function startLoading() {
+      const container = document.getElementById('loading-container');
+      const progressBar = document.getElementById('progress-bar');
+
+      if (!container || !progressBar) return;
+
+      // Initialize the particle ball
+      try {
+        loadingBallCleanup = initializeLoadingBall('particle-canvas');
+      } catch (error) {
+        console.error('Failed to initialize loading ball:', error);
+      }
+
+      // GSAP elegant entrance animations
+      const tl = gsap.timeline();
+
+      // Fade in container
+      tl.fromTo(container, {
+        opacity: 0
+      }, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      })
+
+      // Animate logo entrance
+      .fromTo('.logo-text', {
+        opacity: 0,
+        y: -30,
+        scale: 0.8
+      }, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "back.out(1.7)"
+      }, 0.5)
+
+      // Animate corner elements
+      .fromTo('.corner-elements', {
+        opacity: 0,
+        scale: 0.5
+      }, {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.1
+      }, 1)
+
+      // Animate skip button
+      .fromTo('#skip-button', {
+        opacity: 0,
+        x: -30
+      }, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, 1.2)
+
+      // Animate status indicator
+      .fromTo('#status-indicator', {
+        opacity: 0,
+        x: 30
+      }, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, 1.2)
+
+      // Animate loading text
+      .fromTo('.loading-text', {
+        opacity: 0,
+        y: 20
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, 1.5)
+
+      // Animate progress bar container
+      .fromTo('.loading-progress', {
+        opacity: 0,
+        scaleX: 0
+      }, {
+        opacity: 1,
+        scaleX: 1,
+        duration: 1,
+        ease: "power2.out"
+      }, 2);
+
+      // Setup skip button
+      const skipButton = document.getElementById('skip-button');
+      if (skipButton) {
+        skipButton.addEventListener('click', () => {
+          console.log('⏭️ Skip button clicked');
+          hideLoadingScreen();
+        });
+      }
+
+      // Start progress bar animation
+      setTimeout(() => {
+        progressBar.style.width = '100%';
+      }, 2500);
+
+      // Hide loading screen after exactly 15 seconds
+      loadingTimeout = setTimeout(() => {
+        hideLoadingScreen();
+      }, 15000);
+    }
+
+    function hideLoadingScreen() {
+      const container = document.getElementById('loading-container');
+      if (!container) return;
+
+      // Clear timeout if manually triggered
+      if (loadingTimeout) {
+        clearTimeout(loadingTimeout);
+        loadingTimeout = null;
+      }
+
+      // Elegant GSAP exit animation
+      const exitTl = gsap.timeline({
+        onComplete: () => {
+          // Cleanup particle ball after animation
+          if (loadingBallCleanup) {
+            loadingBallCleanup();
+            loadingBallCleanup = null;
+          }
+
+          // Redirect to main website
+          window.location.href = '../index.html';
+        }
+      });
+
+      exitTl
+        // Fade out corner elements first
+        .to('.corner-elements', {
+          opacity: 0,
+          scale: 0.5,
+          duration: 0.5,
+          ease: "power2.in",
+          stagger: 0.1
+        })
+
+        // Fade out status indicator
+        .to('#status-indicator', {
+          opacity: 0,
+          x: 30,
+          duration: 0.5,
+          ease: "power2.in"
+        }, 0.2)
+
+        // Shrink and fade logo
+        .to('.logo-text', {
+          opacity: 0,
+          scale: 1.1,
+          y: -20,
+          duration: 0.8,
+          ease: "power2.in"
+        }, 0.4)
+
+        // Final fade out
+        .to(container, {
+          opacity: 0,
+          scale: 1.05,
+          duration: 0.6,
+          ease: "power2.inOut"
+        }, 0.8);
+    }
+
+    // Start loading when page loads
+    window.addEventListener('load', startLoading);
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (loadingBallCleanup) {
+        loadingBallCleanup();
+      }
+      if (loadingTimeout) {
+        clearTimeout(loadingTimeout);
+      }
+    });
+
+    // Optional: Allow skip by clicking (for development/testing)
+    // Uncomment the line below to enable skip functionality
+    // document.addEventListener('click', hideLoadingScreen);
+  </script>
+</body>
+</html>

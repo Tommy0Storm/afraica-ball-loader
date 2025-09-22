@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="afrAIca - Africa's Executive AI Intelligence Infrastructure. Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms.">
+  <meta name="keywords" content="AI, Africa, artificial intelligence, executive, infrastructure, sovereign">
+  <meta name="author" content="afrAIca PTY LTD">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="afrAIca - Africa's Executive AI Intelligence">
+  <meta property="og:description" content="Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms for leaders building durable advantage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afraica.co.za">
+  <meta property="og:image" content="./src/assets/images/afrAIca-text.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="./src/assets/images/afrAIca-small.png" type="image/png">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="./src/styles/base/tokens.css">
+  <link rel="stylesheet" href="./src/styles/base/reset.css">
+  <link rel="stylesheet" href="./src/styles/layout/grid.css">
+  <link rel="stylesheet" href="./src/styles/components/buttons.css">
+  <link rel="stylesheet" href="./src/styles/components/cards.css">
+  <link rel="stylesheet" href="./src/styles/components/navigation.css">
+  <link rel="stylesheet" href="./src/styles/components/brand-loader.css">
+  <link rel="stylesheet" href="./src/styles/components/forms.css">
+  <link rel="stylesheet" href="./src/styles/components/apart-section.css">
+  <link rel="stylesheet" href="./src/styles/layout/header.css">
+  <link rel="stylesheet" href="./src/styles/layout/hero.css">
+  <link rel="stylesheet" href="./src/styles/layout/sections.css">
+  <link rel="stylesheet" href="./src/styles/utilities/animations.css">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  
+  <!-- Custom theme overrides for improved visibility and thin fonts -->
+  <style>
+    /* Official afrAIca Brand Theme - Using Documented Colors */
+    
+    /* Base background */
+    html, body {
+      background-color: #000000 !important; /* Pure Black from CONFIG.md */
+    }
+    
+    /* Official Brand Typography with Google Sans */
+    body {
+      font-family: 'Google Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-weight: 300 !important;
+      color: #FFFFFF !important; /* Pure White from CONFIG.md */
+      background-color: #000000 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Google Sans', 'Inter', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+      color: #FFFFFF !important; /* Pure White headings */
+    }
+
+    /* Official Brand Red for highlights - exact from CONFIG.md */
+    h1 .hero__title-highlight,
+    h2 .hero__title-highlight,
+    h3 .hero__title-highlight {
+      color: #C8102E !important; /* Official AI Red from CONFIG.md */
+    }
+    
+    p, .card__description, .section__description {
+      font-family: 'Google Sans', 'Inter', system-ui, sans-serif !important;
+      font-weight: 300 !important;
+      color: #F3F4F6 !important; /* Light grey for body text */
+    }
+    
+    /* Premium Brand Sections with Official Colors - Maximum transparency for red animation */
+    .section {
+      background-color: rgba(0, 0, 0, 0.1) !important; /* Much more transparent */
+      position: relative !important;
+      z-index: 10 !important;
+      padding: 5rem 0 !important;
+    }
+    
+    .section--dark {
+      background: linear-gradient(135deg, 
+        rgba(200, 16, 46, 0.02) 0%, 
+        rgba(0, 0, 0, 0.15) 25%,
+        rgba(0, 0, 0, 0.1) 100%) !important; /* Much more transparent */
+    }
+    
+    .section--featured {
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.1) 0%, /* Much more transparent */
+        rgba(200, 16, 46, 0.01) 30%,
+        rgba(0, 0, 0, 0.15) 70%,
+        rgba(255, 255, 255, 0.005) 100%) !important;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.2) 0%, /* More transparent to show red animation */
+        rgba(200, 16, 46, 0.02) 25%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(255, 255, 255, 0.005) 100%) !important;
+      position: relative !important;
+      z-index: 5 !important;
+      min-height: 100vh !important;
+      display: flex !important;
+      visibility: visible !important;
+    }
+    
+    /* Fix header overlap and restore red animation visibility */
+    main {
+      display: block !important;
+      visibility: visible !important;
+      position: relative !important;
+      z-index: 5 !important;
+      padding-top: 120px !important; /* Add padding to clear fixed header */
+    }
+    
+    .container {
+      position: relative !important;
+      z-index: 10 !important;
+      display: block !important;
+      visibility: visible !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      padding: 0 20px !important;
+    }
+    
+    /* Premium Brand Card System - Ultra transparent for red animation */
+    .card {
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.02) 0%, /* Ultra transparent */
+        rgba(200, 16, 46, 0.015) 25%,
+        rgba(255, 255, 255, 0.01) 100%) !important;
+      border: 2px solid rgba(200, 16, 46, 0.15) !important;
+      backdrop-filter: blur(8px) saturate(1.2) !important; /* Minimal blur */
+      box-shadow: 
+        0 0 40px rgba(200, 16, 46, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.1), /* Minimal shadow */
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+      border-radius: 20px !important;
+      display: block !important;
+      visibility: visible !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    
+    .card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 1px !important;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(200, 16, 46, 0.5) 20%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(200, 16, 46, 0.5) 80%,
+        transparent 100%) !important;
+    }
+    
+    .card--premium {
+      border: 3px solid rgba(200, 16, 46, 0.3) !important;
+      box-shadow: 
+        0 0 60px rgba(200, 16, 46, 0.2),
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .card--glass {
+      background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(200, 16, 46, 0.08) 30%,
+        rgba(255, 255, 255, 0.06) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Navigation hover accents - keep cherry red only for nav */
+    .nav__link:hover, a:hover {
+      color: #C8102E !important; /* Cherry red */
+    }
+
+    /* FORCE Hero title highlight - cherry red for "A Movement." - MAXIMUM SPECIFICITY */
+    html body main section#hero.hero .container .hero__content .hero__title .hero__title-highlight,
+    html body .hero .hero__title .hero__title-highlight,
+    html body .hero__title .hero__title-highlight,
+    .hero .hero__title .hero__title-highlight,
+    .hero__title .hero__title-highlight,
+    .hero__title-highlight,
+    span.hero__title-highlight {
+      color: #C8102E !important; /* Cherry red - maximum force override */
+      text-shadow: 0 0 15px rgba(200, 16, 46, 0.8) !important;
+      background-color: transparent !important;
+      -webkit-text-fill-color: #C8102E !important; /* Webkit override */
+      filter: none !important; /* Remove any filters */
+    }
+
+    /* Alternative approach - use CSS custom property override */
+    :root {
+      --color-cherry: #C8102E !important;
+    }
+    
+    /* Official Brand Header - Ultra transparent for red animation */
+    .header {
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.3) 0%, /* Ultra transparent */
+        rgba(200, 16, 46, 0.01) 50%,
+        rgba(0, 0, 0, 0.4) 100%) !important;
+      backdrop-filter: blur(10px) saturate(1.3) !important; /* Minimal blur */
+      border-bottom: 1px solid rgba(200, 16, 46, 0.05) !important;
+      position: fixed !important;
+      z-index: 20 !important;
+      display: block !important;
+      visibility: visible !important;
+    }
+
+    /* FORCE Enhanced navigation menu styling with higher specificity */
+    .header .container .nav {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      padding: 0 2rem !important;
+    }
+
+    .header .nav .nav__links,
+    .nav .nav__links {
+      display: flex !important;
+      align-items: center !important;
+      gap: 1.5rem !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Official Brand Navigation Links */
+    .header .nav .nav__link,
+    .nav .nav__link,
+    .nav__links .nav__link {
+      color: #FFFFFF !important;
+      font-family: 'Google Sans', system-ui, sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      padding: 0.8rem 1.2rem !important;
+      border-radius: 8px !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      text-transform: none !important;
+      letter-spacing: 0.5px !important;
+      backdrop-filter: blur(10px) !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .nav__link:hover {
+      color: #FFFFFF !important;
+      background: linear-gradient(135deg, 
+        #C8102E 0%, 
+        #AD0F2A 100%) !important; /* Official brand gradient */
+      border: 1px solid #C8102E !important;
+      box-shadow: 0 4px 20px rgba(200, 16, 46, 0.4) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Official Brand Button System */
+    .btn-primary.btn-primary--small {
+      background: linear-gradient(135deg, 
+        #C8102E 0%, 
+        #AD0F2A 100%) !important; /* Official brand colors */
+      color: #FFFFFF !important;
+      border: 2px solid #C8102E !important;
+      padding: 1rem 2rem !important;
+      font-weight: 500 !important;
+      border-radius: 12px !important;
+      font-family: 'Google Sans', system-ui, sans-serif !important;
+      box-shadow: 
+        0 4px 15px rgba(200, 16, 46, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .btn-primary.btn-primary--small:hover {
+      background: linear-gradient(135deg, 
+        #E01D3B 0%, 
+        #C8102E 100%) !important;
+      border: 2px solid #E01D3B !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 
+        0 6px 25px rgba(200, 16, 46, 0.5),
+        0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, 
+        #C8102E 0%, 
+        #AD0F2A 100%) !important;
+      color: #FFFFFF !important;
+      border: 2px solid #C8102E !important;
+      padding: 1.2rem 2.5rem !important;
+      font-weight: 600 !important;
+      border-radius: 15px !important;
+      font-family: 'Google Sans', system-ui, sans-serif !important;
+      box-shadow: 
+        0 6px 20px rgba(200, 16, 46, 0.3),
+        0 3px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .btn-secondary {
+      background: transparent !important;
+      color: #FFFFFF !important;
+      border: 2px solid rgba(255, 255, 255, 0.3) !important;
+      backdrop-filter: blur(10px) !important;
+      font-family: 'Google Sans', system-ui, sans-serif !important;
+      border-radius: 15px !important;
+      padding: 1.2rem 2.5rem !important;
+      font-weight: 500 !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 2px solid #C8102E !important;
+      color: #C8102E !important;
+      box-shadow: 0 4px 20px rgba(200, 16, 46, 0.2) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Mobile menu improvements */
+    .nav__toggle {
+      display: none !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 8px !important;
+      padding: 12px !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .nav__toggle:hover {
+      background: rgba(200, 16, 46, 0.9) !important;
+      border-color: #C8102E !important;
+    }
+
+    .nav__toggle-line {
+      width: 24px !important;
+      height: 3px !important;
+      background: white !important;
+      border-radius: 2px !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .nav__mobile {
+      background: rgba(0, 0, 0, 0.95) !important;
+      backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 12px !important;
+      padding: 2rem !important;
+      margin-top: 1rem !important;
+    }
+
+    .nav__mobile-link {
+      color: #FFFFFF !important;
+      font-family: 'Google Sans', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      padding: 1rem 1.5rem !important;
+      border-radius: 8px !important;
+      transition: all 0.3s ease !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .nav__mobile-link:hover {
+      background: rgba(200, 16, 46, 0.9) !important;
+      border: 1px solid #C8102E !important;
+      color: white !important;
+      transform: translateX(8px) !important;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav__links.hidden-mobile {
+        display: none !important;
+      }
+
+      .nav__toggle.hidden-desktop {
+        display: flex !important;
+      }
+
+      .nav__logo-img {
+        height: 120px !important; /* Smaller on mobile */
+      }
+
+      .nav {
+        padding: 0 1rem !important;
+      }
+    }
+
+    /* Clean logo - tripled size */
+    .nav__logo-img {
+      height: 360px !important; /* Triple the size (120px * 3) */
+      width: auto !important;
+      max-width: none !important;
+      object-fit: contain !important;
+      z-index: 21 !important;
+      position: relative !important;
+    }
+
+    .nav__logo {
+      z-index: 21 !important;
+      position: relative !important;
+    }
+    
+    /* Remove previous aggressive debug overrides that broke layering */
+    /* (No global opacity/display/visibility overrides) */
+    
+    /* Hero content – keep default layout; ensure readable on black */
+    .hero__content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Sections sit above background animation but below loading */
+    section {
+      background-color: transparent; /* let pure black show */
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Remove debug text backgrounds */
+    h1, h2, h3, p { background-color: transparent !important; }
+    
+    /* Loading screen completely hidden - no longer needed */
+    #loading-screen {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    
+    .nuclear-typography-sophisticated { font-family: 'Google Sans', 'Inter', system-ui, sans-serif; }
+    
+    .nuclear-word-sophisticated { font-family: 'Google Sans', 'Inter', system-ui, sans-serif; color: white; }
+    
+    .loading-message, .progress-percentage { font-family: 'Google Sans', 'Inter', system-ui, sans-serif; }
+
+    /* Remove SVG tracing spikes (Africa outline) during loading */
+    .nuclear-continent-container,
+    .nuclear-africa-svg {
+      display: none !important;
+    }
+
+    /* Mzansi Logo - Convert yellow AI to red */
+    img[src*="mzainsi.png"] {
+      filter: sepia(100%) saturate(300%) hue-rotate(320deg) brightness(0.8) contrast(1.2);
+      /* This converts yellow AI text to red while preserving other colors */
+    }
+  </style>
+  
+  <title>afrAIca — Africa's Executive AI Intelligence</title>
+</head>
+<body>
+  <!-- EXACT-AS-IS RED ANIMATION (background layer) -->
+  <iframe id="red-anime-bg" src="./red-anime.html" title="red animation"
+    style="position:fixed;inset:0;border:0;width:100%;height:100%;z-index:0;pointer-events:none;background:#000"></iframe>
+
+  <!-- Loading Screen Container removed - was blocking clicks -->
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="nav__logo">
+          <img src="https://i.postimg.cc/kM0F0RL5/afr-AIca-logo.png" alt="afrAIca" class="nav__logo-img">
+        </a>
+        
+        <ul class="nav__links hidden-mobile">
+          <li><a href="#" class="nav__link" id="about-link">About</a></li>
+          <li><a href="#what-sets-us-apart" class="nav__link">What Sets Us Apart</a></li>
+          <li><a href="#business-model" class="nav__link">Business Model</a></li>
+          <li><a href="#promise" class="nav__link">Our Promise</a></li>
+          <li><a href="#solutions" class="nav__link">Solutions</a></li>
+          <li><a href="#contact" class="nav__link btn-primary btn-primary--small">Talk to us</a></li>
+        </ul>
+        
+        <!-- Mobile menu button -->
+        <button class="nav__toggle hidden-desktop" id="nav-toggle">
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+        
+        <!-- Mobile menu -->
+        <div class="nav__mobile hidden-desktop" id="nav-mobile">
+          <ul class="nav__mobile-links">
+            <li><a href="#" class="nav__mobile-link" id="about-link-mobile">About</a></li>
+            <li><a href="#what-sets-us-apart" class="nav__mobile-link">What Sets Us Apart</a></li>
+            <li><a href="#business-model" class="nav__mobile-link">Business Model</a></li>
+            <li><a href="#promise" class="nav__mobile-link">Our Promise</a></li>
+            <li><a href="#solutions" class="nav__mobile-link">Solutions</a></li>
+            <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero__background">
+        <div class="hero__mesh"></div>
+        <div class="hero__particles" id="particles"></div>
+      </div>
+      
+      <div class="container">
+        <div class="hero__content">
+          <span class="hero__badge animate-fade-up">EXECUTIVE AI INFRASTRUCTURE</span>
+          <h1 class="hero__title animate-fade-up">
+            Not Just Another Tech Holding Company.
+            <span class="hero__title-highlight">A Movement.</span>
+          </h1>
+          <p class="hero__description animate-fade-up">
+            afr<span style="color: #C8102E;">AI</span>ca is more than a brand, it's a blueprint for AI on the continent. 
+            Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms 
+            for leaders building durable advantage.
+          </p>
+          <div class="hero__cta animate-fade-up">
+            <a href="#about" class="btn-primary btn-primary--large">Explore Our Vision</a>
+            <a href="#contact" class="btn-secondary btn-secondary--large">Start Conversation</a>
+          </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="hero__scroll">
+          <div class="scroll-indicator">
+            <span class="scroll-text">Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">About afr<span style="color: #C8102E;">AI</span>ca</h2>
+          <p class="section__description animate-fade-up">
+            We're a holding company designed to birth, back, and bolster high-impact ventures
+            across the African AI value chain.
+          </p>
+          <p class="section__description animate-fade-up" style="margin-top: 1.5rem;">
+            Our Northern Star is for AI to <span style="color: #C8102E; font-weight: 500;">responsibly transform</span> and fuel progress for bold and new futures in Africa.
+          </p>
+        </div>
+        
+        <div class="about__content animate-fade-up text-center">
+          <p>
+            Our ecosystem is engineered to address Africa's biggest AI frustrations,
+            focusing on the skills vacuum and delivering true African transformation.
+          </p>
+          <p>
+            Our first-born, <strong>mz<span style="color: #C8102E;">AI</span>nsi</strong>, is already rolling out intelligent
+            strategy and development services across industries. And trust us, she won't be the last.
+          </p>
+        </div>
+
+        <div class="about__logos animate-fade-up" style="margin-top: 3rem;">
+          <div class="logo-grid" style="display: flex; justify-content: center; gap: 4rem; max-width: 600px; margin: 0 auto;">
+            <div class="logo-item">
+              <img src="./src/assets/images/mzainsi.png" alt="mzAInsi" class="logo-item__image">
+              <span class="logo-item__label">Strategy & Development</span>
+            </div>
+            <div class="logo-item" style="cursor: pointer;" onclick="document.getElementById('ai-readiness-card').scrollIntoView({ behavior: 'smooth' });">
+              <img src="./src/assets/images/ai-assessment.png" alt="AI Assessment" class="logo-item__image">
+              <span class="logo-item__label">AI Assessment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Sets Us Apart Section -->
+    <section id="what-sets-us-apart" class="section section--featured">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">What Sets Us Apart</h2>
+          <p class="section__description animate-fade-up">
+            Strategic intelligence and independent transformation leadership that delivers measurable results across the African AI landscape.
+          </p>
+        </div>
+
+        <div class="apart__grid">
+          <div class="card card--premium animate-fade-up">
+            <div class="card__badge card__badge--featured">Enterprise Excellence</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <h3 class="card__title">Why We Stand Out</h3>
+              <p class="card__subtitle">Enterprise AI that's contextual, purposeful, and production-ready</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We are the ONLY AI company that can deploy solutions enterprise-wide. Most AI projects stall in pilots. Ours doesn't. Real business context + clear purpose = measurable outcomes at scale.
+              </p>
+
+              <div class="card__section">
+                <h4 class="card__section-title">What makes us different</h4>
+                <ul class="card__features">
+                  <li><strong>Enterprise-wide deployment:</strong> Only company capable of full-scale enterprise rollouts</li>
+                  <li><strong>Context that compounds:</strong> Knowledge grows smarter with every use</li>
+                  <li><strong>Right model, right job:</strong> No vendor lock-in, optimal performance</li>
+                  <li><strong>Built for governance:</strong> Compliance and auditability from day one</li>
+                </ul>
+              </div>
+
+              <div class="card__section">
+                <h4 class="card__section-title">What you gain</h4>
+                <ul class="card__benefits">
+                  <li>Lower cost, higher accuracy</li>
+                  <li>Faster deployment, less risk</li>
+                  <li>Living context that evolves</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--premium animate-fade-up">
+            <div class="card__badge card__badge--featured">Science-Backed Solutions</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/>
+                  <path d="M13 5h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/>
+                  <path d="M9 11a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2"/>
+                  <path d="M13 13a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2"/>
+                  <circle cx="12" cy="12" r="1"/>
+                </svg>
+              </div>
+              <h3 class="card__title">Custom Solutions Backed by Science</h3>
+              <p class="card__subtitle">Research-driven innovation with academic excellence</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Most shelf products aren't backed by PhDs—ours are. University partnerships = direct access to PhD data scientists and breakthrough research. We can look under the hood.
+              </p>
+              <div class="card__section">
+                <h4 class="card__section-title">PhD-Backed Advantage</h4>
+                <ul class="card__features">
+                  <li><strong>Real expertise:</strong> Actual PhD data scientists, not marketing claims</li>
+                  <li><strong>Scientific rigor:</strong> Academic-grade testing and validation</li>
+                  <li><strong>Latest breakthroughs:</strong> First access from university research labs</li>
+                  <li><strong>Innovation pipeline:</strong> Technologies before they hit market</li>
+                </ul>
+              </div>
+              <div class="card__section">
+                <h4 class="card__section-title">What you get</h4>
+                <ul class="card__benefits">
+                  <li>Peer-reviewed research foundations</li>
+                  <li>Specialized domain expertise</li>
+                  <li>Higher success through science</li>
+                  <li>Continuous academic innovation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--premium animate-fade-up">
+            <div class="card__badge card__badge--featured">Independent Leadership</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h3 class="card__title">AI Strategy Consulting</h3>
+              <p class="card__subtitle">Independent transformation leadership from strategy through pilot to scale</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Independent transformation leadership: strategy → pilot → scale. Embedded change management for sustainable results.
+              </p>
+              <ul class="card__features">
+                <li><strong>No vendor bias:</strong> Independent advisory, no hardware agenda</li>
+                <li><strong>End-to-end leadership:</strong> Strategy through to full scale deployment</li>
+                <li><strong>Change management:</strong> Embedded in every engagement</li>
+                <li><strong>Cultural intelligence:</strong> African market expertise</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card card--premium animate-fade-up">
+            <div class="card__badge card__badge--featured">Rapid Development</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="M7 10h5l-2-3"/>
+                  <path d="M14 10h3l-1.5-3"/>
+                </svg>
+              </div>
+              <h3 class="card__title">Intelligent Applications</h3>
+              <p class="card__subtitle">Rapid development of production-ready AI solutions</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Rapid development of production-ready AI solutions. Enterprise-grade security and scalability from day one.
+              </p>
+              <ul class="card__features">
+                <li><strong>Production-ready:</strong> No pilots, live solutions immediately</li>
+                <li><strong>Critical functions:</strong> Business-critical optimization</li>
+                <li><strong>Enterprise-grade:</strong> Security and compliance built-in</li>
+                <li><strong>Scalable architecture:</strong> Grows with your demands</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card card--premium animate-fade-up" id="ai-readiness-card">
+            <div class="card__badge card__badge--featured">Strategic Assessment</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/>
+                  <path d="M13 5h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/>
+                  <path d="M9 11a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2"/>
+                  <circle cx="12" cy="12" r="1"/>
+                </svg>
+              </div>
+              <h3 class="card__title">AI Readiness Assessments</h3>
+              <p class="card__subtitle">Strategic intelligence that transforms uncertainty into clear implementation pathways</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Strategic intelligence that transforms "Are we ready for AI?" into clear implementation pathways with measurable outcomes.
+              </p>
+              <ul class="card__features">
+                <li><strong>Basic to Custom tiers:</strong> For organizations of every size</li>
+                <li><strong>Executive-ready reports:</strong> 8-dimension heatmap analysis</li>
+                <li><strong>90-day implementation roadmaps:</strong> Quick wins identification</li>
+                <li><strong>Strategic positioning:</strong> Against continental benchmarks</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card card--premium animate-fade-up">
+            <div class="card__badge card__badge--featured">Infrastructure Excellence</div>
+            <div class="card__header">
+              <div class="card__icon-wrapper">
+                <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="M16 8l-4 4-4-4"/>
+                </svg>
+              </div>
+              <h3 class="card__title">GPU Infrastructure Enablement</h3>
+              <p class="card__subtitle">Strategic guidance for scalable, sovereign-aware AI infrastructure</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Strategic guidance for scalable, sovereign-aware AI infrastructure deployment optimized for African markets.
+              </p>
+              <ul class="card__features">
+                <li><strong>Advisory services:</strong> For AI infrastructure deployment</li>
+                <li><strong>Sovereign hosting pathways:</strong> For sensitive applications</li>
+                <li><strong>Scalable architectures:</strong> From pilot to enterprise grade</li>
+                <li><strong>Cost optimization strategies:</strong> For African market conditions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section id="business-model" class="section section--dark">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Our Business Model</h2>
+        </div>
+        
+        <div class="business-model__content animate-fade-up">
+          <p>
+            At afr<span style="color: #C8102E;">AI</span>ca, we don't just join the AI conversation, we moderate it. Think of us as your 
+            organisation's <strong>AI Ombudsman</strong>: impartial, honest, and deeply invested in the outcome. 
+            We aren't here to flog hardware or push pre-packed platforms. In fact, we don't sell GPUs or servers, 
+            we unlock their potential. Our value lies not in the infrastructure itself, but in what you can do with it. 
+            That's why our model focuses on <strong>capability, not components</strong>.
+          </p>
+          <p>
+            AI transformation, when done right, shouldn't feel like a software upgrade, it should feel like a 
+            <strong>cultural shift</strong>. That's where we come in. afr<span style="color: #C8102E;">AI</span>ca helps businesses evolve from legacy 
+            operations to insight-driven powerhouses. But we don't stop at fixing what exists. We proactively 
+            design and build new applications that reimagine what's possible for industries, governments, and 
+            communities across the continent. These aren't vanity apps. These are <strong>continental game-changers</strong>.
+          </p>
+          <p>
+            And we don't believe in generic AI solutions built in labs thousands of kilometers away. Your business 
+            has its own challenges, context, and, most importantly, its own data. So we use your data to build your 
+            product. <strong>Custom. Local. Powerful.</strong> That's not just transformation. That's ownership.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section id="promise" class="section">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Our Promise</h2>
+          <p class="section__description animate-fade-up">
+            At afr<span style="color: #C8102E;">AI</span>ca, our promise is more than just a marketing line, it's a commitment stitched into 
+            the fabric of everything we do.
+          </p>
+        </div>
+        
+        <div class="promise__grid">
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Transform Africa</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to transform Africa from the grassroots up, not just by bringing AI to the continent, 
+                but by building it here, with local hands, local knowledge, and local ambition.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Empower Enterprises</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to transform African enterprises by helping them not only adopt AI but truly own it. 
+                Whether you're a pan-African telco or a family-run business with big dreams.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Protect Your Data</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to keep your data safe. Always. Your information will never be treated as a commodity. 
+                We believe data is sovereignty, and we respect it as such.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Best Practices</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to keep to best practices. That means aligning with global standards, implementing 
+                proven frameworks, and continuously improving how we build, deploy, and manage AI.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__header">
+              <h3 class="card__title">Ethical AI</h3>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                We promise to deliver ethical and responsible AI. We don't build black boxes. We build systems 
+                that are explainable, fair, and human-centred.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="section section--dark">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Coming Soon</h2>
+          <p class="section__description animate-fade-up">
+            Revolutionary AI solutions in development to accelerate Africa's transformation.
+          </p>
+        </div>
+        
+        <div class="solutions__grid">
+          <div class="card card--featured animate-fade-up">
+            <div class="card__badge card__badge--progress">In Development</div>
+            <div class="card__header">
+              <img src="./src/assets/images/ai-assessment.png" alt="AI Assessment" class="card__icon">
+              <h3 class="card__title">Budget Liberation Tool</h3>
+              <p class="card__subtitle">Mechanism for freeing up budget for AI, proven to work</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                A revolutionary approach to identifying and reallocating existing resources to fund AI initiatives 
+                without additional capital requirements.
+              </p>
+            </div>
+          </div>
+          
+          <div class="card card--glass animate-fade-up">
+            <div class="card__badge card__badge--progress">80% Complete</div>
+            <div class="card__header">
+              <img src="./src/assets/images/afraica-vision.png" alt="Legal AI" class="card__icon">
+              <h3 class="card__title">Legal AI Application</h3>
+              <p class="card__subtitle">Intelligent legal analysis and document processing</p>
+            </div>
+            <div class="card__content">
+              <p class="card__description">
+                Advanced AI-powered legal research, contract analysis, and compliance monitoring specifically 
+                designed for African legal frameworks.
+              </p>
+              <div class="card__progress">
+                <div class="progress-bar">
+                  <div class="progress-bar__fill" style="width: 80%;"></div>
+                </div>
+                <div class="progress-text">80% Complete</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section--featured">
+      <div class="container">
+        <div class="section__header text-center">
+          <h2 class="section__title animate-fade-up">Let's Transform Together</h2>
+          <p class="section__description animate-fade-up">
+            We want to hear from you. Ready to join Africa's AI transformation movement?
+          </p>
+        </div>
+        
+        <div class="contact__content">
+          <div class="grid grid--2">
+            <div class="card card--glass animate-fade-up">
+              <div class="card__header">
+                <h3 class="card__title">Investor Relations</h3>
+              </div>
+              <div class="card__content">
+                <p class="card__description">
+                  Interested in backing Africa's AI future? Let's discuss investment opportunities and partnership possibilities.
+                </p>
+                <button type="button" class="btn-primary email-button" onclick="window.location.href='mailto:progress@afraica.co.za?subject=Investment%20Opportunity%20-%20afrAIca'">progress@afraica.co.za</button>
+              </div>
+            </div>
+            
+            <div class="card card--glass animate-fade-up">
+              <div class="card__header">
+                <h3 class="card__title">General Inquiries</h3>
+              </div>
+              <div class="card__content">
+                <p class="card__description">
+                  Questions about our services, partnerships, or how we can help transform your organization?
+                </p>
+                <button type="button" class="btn-primary email-button" onclick="window.location.href='mailto:kudzikama@afraica.co.za?subject=General%20Inquiry%20-%20afrAIca'">kudzikama@afraica.co.za</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-12 animate-fade-up">
+            <a href="https://afraica.co.za/code-of-ethics" class="btn-outline" target="_blank">View Our Code of Ethics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>&copy; 2025 afrAIca PTY LTD. All rights reserved.</p>
+        <a href="https://afraica.co.za/code-of-ethics" class="footer__link">Code of Ethics</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- About Us Modal -->
+  <div id="about-modal" class="modal" style="display: none;">
+    <div class="modal__backdrop"></div>
+    <div class="modal__container">
+      <div class="modal__header">
+        <h2 class="modal__title">About afr<span style="color: #C8102E;">AI</span>ca</h2>
+        <button class="modal__close" id="about-modal-close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__content">
+        <div class="about-modal__content">
+          <section class="about-section">
+            <h3 class="about-section__title">Transforming Africa Through Intelligent Technology</h3>
+            <p class="about-section__text">
+              afr<span style="color: #C8102E;">AI</span>ca isn't just another AI company—we're <em>transformation enablers for executive leadership</em> across the continent. While others deliver technology, we enable transformation. We're the only enterprise platform with persistent memory, cultural intelligence, and a comprehensive ecosystem that makes AI accessible for Africa's executive leadership.
+            </p>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">Our Mission: Africa's AI-Powered Future</h3>
+            <p class="about-section__text">
+              We believe Africa's demographic advantage—with a median age of 19.7 years and 60% of the population under 25—represents either the continent's greatest opportunity or most dangerous challenge. By 2050, Africa will have the world's largest working population. We're building the AI infrastructure to unlock this unprecedented potential through accessible, culturally-intelligent technology.
+            </p>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">Beyond Technology: Complete AI Transformation</h3>
+            <p class="about-section__text">Our comprehensive ecosystem guides organizations through every stage of AI adoption:</p>
+            <ul class="about-section__list">
+              <li><em>Assessment</em> reveals organizational readiness and strategic pathways</li>
+              <li><em>Development</em> creates custom AI applications tailored to African contexts</li>
+              <li><em>Hosting</em> provides scalable, enterprise-grade infrastructure</li>
+              <li><em>Optimization</em> ensures continuous improvement and competitive advantage</li>
+            </ul>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">What Makes Us Different</h3>
+
+            <div class="about-subsection">
+              <h4 class="about-subsection__title">Independent Advisory Excellence</h4>
+              <p class="about-section__text">No vendor bias, no hardware agenda. We provide independent guidance focused on your transformation success, not technology sales.</p>
+            </div>
+
+            <div class="about-subsection">
+              <h4 class="about-subsection__title">Cultural Intelligence Built-In</h4>
+              <p class="about-section__text">Our AI models are trained on African languages, contexts, and traditional knowledge systems, enhanced by modern capabilities that understand local business environments.</p>
+            </div>
+
+            <div class="about-subsection">
+              <h4 class="about-subsection__title">Proven Ecosystem Approach</h4>
+              <p class="about-section__text">From strategic assessments to production deployment, we create continuous value through relationship-based partnerships, not project-based transactions.</p>
+            </div>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">Our Platform Portfolio</h3>
+            <div class="about-platform">
+              <p class="about-section__text">
+                <strong>afr<span style="color: #C8102E;">AI</span>ca Executive Platform</strong>: Multi-modal intelligence infrastructure with persistent memory and specialized AI models for enterprise leadership.
+              </p>
+              <p class="about-section__text">
+                <strong>LIANELA™</strong>: Professional application showcase demonstrating AI-powered legal and compliance management with live transcription and intelligent insights.
+              </p>
+              <p class="about-section__text">
+                <strong>Educational Excellence</strong>: Targeting Africa's 260,000 annual matriculants unable to access university, creating the AI-skilled workforce of tomorrow through NQF-accredited programs.
+              </p>
+            </div>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">Strategic Partnership with mz<span style="color: #C8102E;">AI</span>nsi</h3>
+            <p class="about-section__text">
+              Through our partnership with <em>mz<span style="color: #C8102E;">AI</span>nsi</em>, we deliver expert consulting services that ensure African enterprises successfully deploy and maximize value from AI intelligence platforms. While afrAIca provides impossible-to-replicate technology infrastructure, mz<span style="color: #C8102E;">AI</span>nsi delivers the strategic guidance, training, and ongoing support that makes AI transformation successful.
+            </p>
+          </section>
+
+          <section class="about-section">
+            <h3 class="about-section__title">Pan-African Vision</h3>
+            <p class="about-section__text">
+              Our proven model is ready for expansion across Kenya, Uganda, Zimbabwe, and beyond—with localized approaches adapted to regulatory and cultural contexts across the continent. We're not just building AI solutions; we're creating an ecosystem where African companies don't just use AI—they lead with it.
+            </p>
+          </section>
+
+          <section class="about-section about-section--highlight">
+            <h3 class="about-section__title">The Choice is Clear</h3>
+            <p class="about-section__text">
+              Will Africa's next generation be consumers of AI built elsewhere, or will they be the creators of AI solutions that transform the continent?
+            </p>
+            <p class="about-section__text">
+              At afr<span style="color: #C8102E;">AI</span>ca, we ensure the future belongs to leaders who understand technology and can use it to solve problems. We're making AI less mysterious, more approachable, and infinitely more powerful for African success.
+            </p>
+          </section>
+
+          <section class="about-section about-section--cta">
+            <h3 class="about-section__title">Ready for Executive AI Transformation?</h3>
+            <p class="about-section__text">
+              Whether you're leadership seeking comprehensive AI transformation or an investor interested in Africa's demographic advantage, we guide organizations through every stage of intelligent technology adoption.
+            </p>
+            <div class="about-section__cta">
+              <a href="#contact" class="btn-primary" id="modal-contact-btn">Start Your Transformation</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple red fix for "A Movement." and About Us modal -->
+  <script>
+    function fixRedMovement() {
+      const element = document.querySelector('.hero__title-highlight');
+      if (element) {
+        element.style.setProperty('color', '#C8102E', 'important');
+        element.style.setProperty('text-shadow', '0 0 15px rgba(200, 16, 46, 0.8)', 'important');
+      }
+    }
+
+    function initAboutModal() {
+      console.log('Initializing About modal...');
+
+      const aboutLinks = document.querySelectorAll('#about-link, #about-link-mobile');
+      const modal = document.getElementById('about-modal');
+      const closeBtn = document.getElementById('about-modal-close');
+      const contactBtn = document.getElementById('modal-contact-btn');
+
+      console.log('Found elements:', {
+        aboutLinks: aboutLinks.length,
+        modal: !!modal,
+        closeBtn: !!closeBtn,
+        contactBtn: !!contactBtn
+      });
+
+      // Open modal
+      aboutLinks.forEach((link, index) => {
+        console.log(`Adding click listener to about link ${index}`);
+        link.addEventListener('click', (e) => {
+          console.log('About link clicked!');
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (modal) {
+            console.log('Opening modal...');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          } else {
+            console.log('Modal not found!');
+          }
+        });
+      });
+
+      // Close modal function
+      function closeModal() {
+        console.log('Closing modal...');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Close modal events
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          closeModal();
+        });
+      }
+
+      // Close on backdrop click
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal || e.target.classList.contains('modal__backdrop')) {
+            closeModal();
+          }
+        });
+      }
+
+      // Contact button in modal
+      if (contactBtn) {
+        contactBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          closeModal();
+          setTimeout(() => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 300);
+        });
+      }
+
+      // ESC key to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+    }
+
+    // Run after page loads
+    window.addEventListener('load', () => {
+      setTimeout(fixRedMovement, 500);
+      initAboutModal();
+    });
+
+    // AGGRESSIVE ABOUT MODAL FIX
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const aboutLinks = document.querySelectorAll('#about-link, #about-link-mobile');
+        const modal = document.getElementById('about-modal');
+
+        console.log('🔥 AGGRESSIVE ABOUT FIX:', aboutLinks.length, !!modal);
+
+        aboutLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('🎯 ABOUT CLICKED!');
+            if (modal) {
+              modal.style.display = 'block';
+              modal.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+      }, 1000);
+    });
+  </script>
+
+  <!-- Simple Email Test -->
+  <script>
+    console.log('🔧 Email test script loaded');
+    
+    // Test if buttons are clickable
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('� Page loaded, checking for email buttons...');
+      const buttons = document.querySelectorAll('.email-button');
+      console.log('Found buttons:', buttons.length);
+      
+      buttons.forEach((btn, i) => {
+        console.log(`Button ${i}:`, btn.textContent);
+        btn.addEventListener('click', () => {
+          console.log('✅ Button clicked!', btn.textContent);
+        });
+      });
+    });
+  </script>
+
+  <!-- Comprehensive Button Debug -->
+  <script>
+    console.log('🔧 Comprehensive button debug loaded');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('� DOM loaded, running comprehensive button tests...');
+      
+      // Test 1: Check if email buttons exist
+      const emailButtons = document.querySelectorAll('.email-button');
+      console.log('� Found email buttons:', emailButtons.length);
+      
+      emailButtons.forEach((btn, i) => {
+        console.log(`Button ${i + 1}:`, {
+          text: btn.textContent,
+          onclick: btn.onclick,
+          hasOnclick: !!btn.onclick,
+          style: {
+            pointerEvents: window.getComputedStyle(btn).pointerEvents,
+            cursor: window.getComputedStyle(btn).cursor,
+            display: window.getComputedStyle(btn).display,
+            visibility: window.getComputedStyle(btn).visibility,
+            zIndex: window.getComputedStyle(btn).zIndex
+          },
+          boundingRect: btn.getBoundingClientRect()
+        });
+        
+        // Add manual click listener for testing
+        btn.addEventListener('click', function(e) {
+          console.log(`✅ Manual listener fired for button ${i + 1}!`);
+          e.preventDefault();
+          const email = btn.textContent.trim();
+          const subject = email.includes('progress') ? 'Investment Opportunity' : 'General Inquiry';
+          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject + ' - afrAIca')}`;
+          console.log('📧 Attempting to open:', mailtoLink);
+          window.location.href = mailtoLink;
+        });
+      });
+      
+      // Test 2: Check for any overlaying elements
+      const testClick = function(x, y) {
+        const elementAtPoint = document.elementFromPoint(x, y);
+        console.log(`🎯 Element at (${x}, ${y}):`, elementAtPoint);
+        return elementAtPoint;
+      };
+      
+      // Test each button's click area
+      emailButtons.forEach((btn, i) => {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const elementAtCenter = testClick(centerX, centerY);
+        console.log(`🎯 Button ${i + 1} center element:`, elementAtCenter === btn ? 'BUTTON ITSELF ✅' : 'SOMETHING ELSE ❌', elementAtCenter);
+      });
+      
+      // Test 3: Check all buttons
+      const allButtons = document.querySelectorAll('button, a[href]');
+      console.log('🔘 Total clickable elements:', allButtons.length);
+      
+      allButtons.forEach((btn, i) => {
+        if (i < 5) { // Just first 5 to avoid spam
+          console.log(`Element ${i}:`, btn.tagName, btn.className, !!btn.onclick);
+        }
+      });
+    });
+    
+    // Global click catcher
+    document.addEventListener('click', function(e) {
+      console.log('🖱️ CLICK DETECTED:', {
+        target: e.target,
+        tagName: e.target.tagName,
+        className: e.target.className,
+        id: e.target.id,
+        coordinates: { x: e.clientX, y: e.clientY }
+      });
+      
+      if (e.target.classList.contains('email-button')) {
+        console.log('📧 EMAIL BUTTON CLICKED!');
+      }
+    }, true); // Use capture phase
+  </script>
+
+  <!-- Tactical Loader Integration -->
+  <script>
+  </script>
+
+  <!-- Scripts -->
+  <script type="module" src="./src/scripts/main.js?v=20250918120000"></script>
+</body>
+</html>
