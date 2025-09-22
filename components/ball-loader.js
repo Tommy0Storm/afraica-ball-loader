@@ -162,7 +162,12 @@ export function initializeLoadingBall(canvasId) {
         // Mark loading as complete and redirect immediately
         sessionStorage.setItem('afraica-loaded', 'true');
         console.log('Redirecting to main.html...');
-        window.location.href = './main.html';
+
+        // Force redirect using multiple methods
+        setTimeout(() => {
+          window.location = 'main.html';
+        }, 100);
+
         return; // Exit animation loop
       }
     }
