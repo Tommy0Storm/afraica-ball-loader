@@ -188,19 +188,11 @@
       color: #C8102E !important; /* Cherry red */
     }
 
-    /* FORCE Hero title highlight - cherry red for "A Movement." - MAXIMUM SPECIFICITY */
-    html body main section#hero.hero .container .hero__content .hero__title .hero__title-highlight,
-    html body .hero .hero__title .hero__title-highlight,
-    html body .hero__title .hero__title-highlight,
-    .hero .hero__title .hero__title-highlight,
-    .hero__title .hero__title-highlight,
-    .hero__title-highlight,
-    span.hero__title-highlight {
-      color: #C8102E !important; /* Cherry red - maximum force override */
+    /* Hero title highlight styling */
+    .hero__title-highlight {
+      color: #C8102E !important;
       text-shadow: 0 0 15px rgba(200, 16, 46, 0.8) !important;
       background-color: transparent !important;
-      -webkit-text-fill-color: #C8102E !important; /* Webkit override */
-      filter: none !important; /* Remove any filters */
     }
 
     /* Alternative approach - use CSS custom property override */
@@ -230,44 +222,39 @@
       visibility: visible !important;
     }
 
-    /* FORCE Enhanced navigation menu styling with higher specificity */
-    .header .container .nav {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      width: 100% !important;
-      padding: 0 2rem !important;
+    /* Navigation menu styling */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 2rem;
     }
 
-    .header .nav .nav__links,
-    .nav .nav__links {
-      display: flex !important;
-      align-items: center !important;
-      gap: 1.5rem !important;
-      list-style: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Official Brand Navigation Links */
-    .header .nav .nav__link,
-    .nav .nav__link,
-    .nav__links .nav__link {
-      color: #FFFFFF !important;
-      font-family: 'Google Sans', system-ui, sans-serif !important;
-      font-weight: 500 !important;
-      font-size: 1.1rem !important;
-      text-decoration: none !important;
-      padding: 0.8rem 1.2rem !important;
-      border-radius: 8px !important;
-      transition: all 0.3s ease !important;
-      position: relative !important;
-      text-transform: none !important;
-      letter-spacing: 0.5px !important;
-      backdrop-filter: blur(10px) !important;
-      background: rgba(255, 255, 255, 0.05) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    /* Navigation links */
+    .nav__link {
+      color: #FFFFFF;
+      font-family: 'Google Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     .nav__link:hover {
@@ -280,32 +267,24 @@
       transform: translateY(-2px) !important;
     }
 
-    /* Official Brand Button System */
-    .btn-primary.btn-primary--small {
-      background: linear-gradient(135deg, 
-        #C8102E 0%, 
-        #AD0F2A 100%) !important; /* Official brand colors */
-      color: #FFFFFF !important;
-      border: 2px solid #C8102E !important;
-      padding: 1rem 2rem !important;
-      font-weight: 500 !important;
-      border-radius: 12px !important;
-      font-family: 'Google Sans', system-ui, sans-serif !important;
-      box-shadow: 
-        0 4px 15px rgba(200, 16, 46, 0.3),
-        0 2px 8px rgba(0, 0, 0, 0.2) !important;
-      transition: all 0.3s ease !important;
+    /* Primary button styling */
+    .btn-primary--small {
+      background: linear-gradient(135deg, #C8102E 0%, #AD0F2A 100%);
+      color: #FFFFFF;
+      border: 2px solid #C8102E;
+      padding: 1rem 2rem;
+      font-weight: 500;
+      border-radius: 12px;
+      font-family: 'Google Sans', system-ui, sans-serif;
+      box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .btn-primary.btn-primary--small:hover {
-      background: linear-gradient(135deg, 
-        #E01D3B 0%, 
-        #C8102E 100%) !important;
-      border: 2px solid #E01D3B !important;
-      transform: translateY(-3px) !important;
-      box-shadow: 
-        0 6px 25px rgba(200, 16, 46, 0.5),
-        0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    .btn-primary--small:hover {
+      background: linear-gradient(135deg, #E01D3B 0%, #C8102E 100%);
+      border: 2px solid #E01D3B;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(200, 16, 46, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3);
     }
     
     .btn-primary {
@@ -418,14 +397,13 @@
       }
     }
 
-    /* Clean logo - tripled size */
+    /* Logo styling */
     .nav__logo-img {
-      height: 360px !important; /* Triple the size (120px * 3) */
-      width: auto !important;
-      max-width: none !important;
-      object-fit: contain !important;
-      z-index: 21 !important;
-      position: relative !important;
+      height: 360px; /* 3 times bigger than 120px */
+      width: auto;
+      object-fit: contain;
+      z-index: 21;
+      position: relative;
     }
 
     .nav__logo {
@@ -1127,7 +1105,7 @@
     </div>
   </div>
 
-  <!-- Simple red fix for "A Movement." and About Us modal -->
+  <!-- Modal and styling fixes -->
   <script>
     function fixRedMovement() {
       const element = document.querySelector('.hero__title-highlight');
@@ -1138,43 +1116,30 @@
     }
 
     function initAboutModal() {
-      console.log('Initializing About modal...');
-
       const aboutLinks = document.querySelectorAll('#about-link, #about-link-mobile');
       const modal = document.getElementById('about-modal');
       const closeBtn = document.getElementById('about-modal-close');
       const contactBtn = document.getElementById('modal-contact-btn');
 
-      console.log('Found elements:', {
-        aboutLinks: aboutLinks.length,
-        modal: !!modal,
-        closeBtn: !!closeBtn,
-        contactBtn: !!contactBtn
-      });
-
       // Open modal
-      aboutLinks.forEach((link, index) => {
-        console.log(`Adding click listener to about link ${index}`);
+      aboutLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
-          console.log('About link clicked!');
           e.preventDefault();
           e.stopPropagation();
 
           if (modal) {
-            console.log('Opening modal...');
             modal.classList.add('active');
+            modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-          } else {
-            console.log('Modal not found!');
           }
         });
       });
 
       // Close modal function
       function closeModal() {
-        console.log('Closing modal...');
         if (modal) {
           modal.classList.remove('active');
+          modal.style.display = 'none';
           document.body.style.overflow = '';
         }
       }
@@ -1213,144 +1178,36 @@
 
       // ESC key to close
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
           closeModal();
         }
       });
     }
 
-    // Run after page loads
+    // Initialize on page load
     window.addEventListener('load', () => {
       setTimeout(fixRedMovement, 500);
       initAboutModal();
     });
-
-    // AGGRESSIVE ABOUT MODAL FIX
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        const aboutLinks = document.querySelectorAll('#about-link, #about-link-mobile');
-        const modal = document.getElementById('about-modal');
-
-        console.log('🔥 AGGRESSIVE ABOUT FIX:', aboutLinks.length, !!modal);
-
-        aboutLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('🎯 ABOUT CLICKED!');
-            if (modal) {
-              modal.style.display = 'block';
-              modal.classList.add('active');
-              document.body.style.overflow = 'hidden';
-            }
-          });
-        });
-      }, 1000);
-    });
   </script>
 
-  <!-- Simple Email Test -->
+  <!-- Email functionality -->
   <script>
-    console.log('🔧 Email test script loaded');
-    
-    // Test if buttons are clickable
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('� Page loaded, checking for email buttons...');
-      const buttons = document.querySelectorAll('.email-button');
-      console.log('Found buttons:', buttons.length);
-      
-      buttons.forEach((btn, i) => {
-        console.log(`Button ${i}:`, btn.textContent);
-        btn.addEventListener('click', () => {
-          console.log('✅ Button clicked!', btn.textContent);
-        });
-      });
-    });
-  </script>
-
-  <!-- Comprehensive Button Debug -->
-  <script>
-    console.log('🔧 Comprehensive button debug loaded');
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('� DOM loaded, running comprehensive button tests...');
-      
-      // Test 1: Check if email buttons exist
       const emailButtons = document.querySelectorAll('.email-button');
-      console.log('� Found email buttons:', emailButtons.length);
-      
-      emailButtons.forEach((btn, i) => {
-        console.log(`Button ${i + 1}:`, {
-          text: btn.textContent,
-          onclick: btn.onclick,
-          hasOnclick: !!btn.onclick,
-          style: {
-            pointerEvents: window.getComputedStyle(btn).pointerEvents,
-            cursor: window.getComputedStyle(btn).cursor,
-            display: window.getComputedStyle(btn).display,
-            visibility: window.getComputedStyle(btn).visibility,
-            zIndex: window.getComputedStyle(btn).zIndex
-          },
-          boundingRect: btn.getBoundingClientRect()
-        });
-        
-        // Add manual click listener for testing
+
+      emailButtons.forEach((btn) => {
         btn.addEventListener('click', function(e) {
-          console.log(`✅ Manual listener fired for button ${i + 1}!`);
           e.preventDefault();
           const email = btn.textContent.trim();
           const subject = email.includes('progress') ? 'Investment Opportunity' : 'General Inquiry';
           const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject + ' - afrAIca')}`;
-          console.log('📧 Attempting to open:', mailtoLink);
           window.location.href = mailtoLink;
         });
       });
-      
-      // Test 2: Check for any overlaying elements
-      const testClick = function(x, y) {
-        const elementAtPoint = document.elementFromPoint(x, y);
-        console.log(`🎯 Element at (${x}, ${y}):`, elementAtPoint);
-        return elementAtPoint;
-      };
-      
-      // Test each button's click area
-      emailButtons.forEach((btn, i) => {
-        const rect = btn.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const elementAtCenter = testClick(centerX, centerY);
-        console.log(`🎯 Button ${i + 1} center element:`, elementAtCenter === btn ? 'BUTTON ITSELF ✅' : 'SOMETHING ELSE ❌', elementAtCenter);
-      });
-      
-      // Test 3: Check all buttons
-      const allButtons = document.querySelectorAll('button, a[href]');
-      console.log('🔘 Total clickable elements:', allButtons.length);
-      
-      allButtons.forEach((btn, i) => {
-        if (i < 5) { // Just first 5 to avoid spam
-          console.log(`Element ${i}:`, btn.tagName, btn.className, !!btn.onclick);
-        }
-      });
     });
-    
-    // Global click catcher
-    document.addEventListener('click', function(e) {
-      console.log('🖱️ CLICK DETECTED:', {
-        target: e.target,
-        tagName: e.target.tagName,
-        className: e.target.className,
-        id: e.target.id,
-        coordinates: { x: e.clientX, y: e.clientY }
-      });
-      
-      if (e.target.classList.contains('email-button')) {
-        console.log('📧 EMAIL BUTTON CLICKED!');
-      }
-    }, true); // Use capture phase
   </script>
 
-  <!-- Tactical Loader Integration -->
-  <script>
-  </script>
 
   <!-- Scripts -->
   <script type="module" src="./src/scripts/main.js?v=20250918120000"></script>
