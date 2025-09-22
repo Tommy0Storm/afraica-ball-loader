@@ -162,7 +162,7 @@ export function initializeLoadingBall(canvasId) {
         // Mark loading as complete and redirect to main page after explosion
         sessionStorage.setItem('afraica-loaded', 'true');
         setTimeout(() => {
-          window.location.replace('/main.html');
+          window.location.replace('./main.html');
         }, 500); // Small delay for smooth transition
       }
     }
