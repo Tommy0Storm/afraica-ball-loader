@@ -203,6 +203,18 @@
       visibility: visible !important;
       display: inline !important;
       z-index: 10 !important;
+      animation: none !important; /* Disable any fade animations */
+      transform: none !important; /* Remove any transforms that might hide text */
+    }
+
+    /* Force visibility for all hero title elements including animations */
+    .hero__title.animate-fade-up,
+    .hero__title-highlight.animate-fade-up,
+    .hero__title .hero__title-highlight {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      animation: none !important;
     }
 
     /* Ensure parent elements don't blur the highlight text */
@@ -1137,6 +1149,11 @@
         element.style.setProperty('visibility', 'visible', 'important');
         element.style.setProperty('display', 'inline', 'important');
         element.style.setProperty('z-index', '10', 'important');
+        element.style.setProperty('animation', 'none', 'important');
+        element.style.setProperty('transform', 'none', 'important');
+
+        // Force remove animation class
+        element.classList.remove('animate-fade-up');
       }
 
       // Also fix parent element
@@ -1146,6 +1163,11 @@
         parentTitle.style.setProperty('backdrop-filter', 'none', 'important');
         parentTitle.style.setProperty('opacity', '1', 'important');
         parentTitle.style.setProperty('visibility', 'visible', 'important');
+        parentTitle.style.setProperty('animation', 'none', 'important');
+        parentTitle.style.setProperty('transform', 'none', 'important');
+
+        // Force remove animation class
+        parentTitle.classList.remove('animate-fade-up');
       }
     }
 
@@ -1218,9 +1240,17 @@
       });
     }
 
-    // Initialize on page load
+    // Initialize immediately and on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      fixRedMovement(); // Run immediately
+      setTimeout(fixRedMovement, 100); // Run again after 100ms
+      setTimeout(fixRedMovement, 500); // Run again after 500ms
+      setTimeout(fixRedMovement, 1000); // Run again after 1s
+      initAboutModal();
+    });
+
     window.addEventListener('load', () => {
-      setTimeout(fixRedMovement, 500);
+      fixRedMovement(); // Run on full page load too
       initAboutModal();
     });
   </script>
