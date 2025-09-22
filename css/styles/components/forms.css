@@ -1,0 +1,258 @@
+/* =============================================================================
+   Form Components - afrAIca Premium
+   ============================================================================= */
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form__group {
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.form__label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-fast);
+}
+
+.form__input,
+.form__textarea,
+.form__select {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  background: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  font-size: var(--text-base);
+  font-family: inherit;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition-base);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--color-gray-500);
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__select:focus {
+  outline: none;
+  border-color: var(--color-cherry);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+  background: var(--glass-strong);
+}
+
+.form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__select {
+  cursor: pointer;
+}
+
+.form__checkbox,
+.form__radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.form__checkbox input,
+.form__radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.form__checkbox-mark,
+.form__radio-mark {
+  width: 20px;
+  height: 20px;
+  background: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.form__checkbox-mark {
+  border-radius: var(--radius-base);
+}
+
+.form__radio-mark {
+  border-radius: 50%;
+}
+
+.form__checkbox input:checked + .form__checkbox-mark,
+.form__radio input:checked + .form__radio-mark {
+  background: var(--gradient-primary);
+  border-color: var(--color-cherry);
+}
+
+.form__checkbox-mark::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.form__checkbox input:checked + .form__checkbox-mark::after {
+  opacity: 1;
+}
+
+.form__radio-mark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.form__radio input:checked + .form__radio-mark::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.form__error {
+  color: #EF4444;
+  font-size: var(--text-sm);
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form__group--error .form__error {
+  display: block;
+}
+
+.form__group--error .form__input,
+.form__group--error .form__textarea,
+.form__group--error .form__select {
+  border-color: #EF4444;
+}
+
+.form__group--error .form__label {
+  color: #EF4444;
+}
+
+.form__success {
+  color: #10B981;
+  font-size: var(--text-sm);
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form__group--success .form__success {
+  display: block;
+}
+
+.form__group--success .form__input,
+.form__group--success .form__textarea,
+.form__group--success .form__select {
+  border-color: #10B981;
+}
+
+/* Form buttons */
+.form__actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+/* Loading state */
+.form--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.form--loading .btn {
+  position: relative;
+}
+
+.form--loading .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+}
+
+/* Newsletter signup */
+.newsletter {
+  background: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.newsletter__title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.newsletter__description {
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-6);
+}
+
+.newsletter__form {
+  display: flex;
+  gap: var(--space-3);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.newsletter__input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  font-size: var(--text-sm);
+}
+
+.newsletter__button {
+  padding: var(--space-3) var(--space-6);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .newsletter__form {
+    flex-direction: column;
+  }
+  
+  .form__actions {
+    flex-direction: column;
+  }
+}

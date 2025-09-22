@@ -1,0 +1,10 @@
+{
+  "routePrefix": "/",
+  "destination": "https://49256631.fs1.hubspotusercontent-na1.net/hubfs/49256631/mzAInsi/ball-loader.html",
+  "redirectStyle": 302,
+  "isOnlyAfterNotFound": false,
+  "isMatchFullUrl": false,
+  "isMatchQueryString": false,
+  "isPattern": false,
+  "precedence": 1
+}

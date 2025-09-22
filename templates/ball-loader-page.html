@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ content.translated_content.language_code }}">
+<head>
+  <meta charset="utf-8">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}{{ page_meta.name }}{% endif %}</title>
+  {% if content.meta_description %}<meta name="description" content="{{ content.meta_description }}">{% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="afrAIca PTY LTD">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="afrAIca - Africa's Executive AI Intelligence">
+  <meta property="og:description" content="Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ content.absolute_url }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ get_asset_url('./images/afrAIca-small.png') }}" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  {{ standard_header_includes }}
+</head>
+<body>
+  {% module "ball_loader" path="../modules/ball-loader" %}
+
+  {{ standard_footer_includes }}
+</body>
+</html>

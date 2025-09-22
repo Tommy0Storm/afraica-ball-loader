@@ -1,0 +1,24 @@
+{
+  "name": "afraica-hubspot-theme",
+  "version": "1.0.0",
+  "description": "afrAIca HubSpot theme with interactive ball loader",
+  "main": "index.js",
+  "scripts": {
+    "upload": "hs upload --src . --dest /",
+    "watch": "hs watch --src . --dest /",
+    "create-module": "hs create module",
+    "create-template": "hs create template"
+  },
+  "keywords": [
+    "hubspot",
+    "theme",
+    "afraica",
+    "ai",
+    "africa"
+  ],
+  "author": "afrAIca PTY LTD",
+  "license": "MIT",
+  "devDependencies": {
+    "@hubspot/cli": "^4.0.0"
+  }
+}

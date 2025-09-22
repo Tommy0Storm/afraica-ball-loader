@@ -1,0 +1,13 @@
+{
+  "label": "Ball Loader",
+  "css_assets": [],
+  "external_dependencies": [],
+  "global": false,
+  "help_text": "afrAIca interactive particle ball loader with explosion sequence",
+  "host_template_types": ["PAGE", "BLOG_POST", "LANDING_PAGE"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["afraica", "loader", "animation"],
+  "is_available_for_new_content": true
+}

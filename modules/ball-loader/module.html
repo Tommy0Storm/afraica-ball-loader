@@ -1,0 +1,27 @@
+<!-- Ball Loader Module for HubSpot -->
+<div class="ball-loader-container">
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="logo-text">
+    afr<span class="logo-ai">AI</span>ca
+  </div>
+
+  <div class="loading-text">
+    Initializing <span class="highlight">AI</span> Intelligence Platform...
+  </div>
+
+  <div class="loading-progress">
+    <div class="loading-progress-bar" id="progress-bar"></div>
+  </div>
+</div>
+
+{{ require_css(get_asset_url("../../css/ball-loader.css")) }}
+{{ require_js(get_asset_url("../../js/ball-loader.js")) }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof initializeLoadingBall === 'function') {
+    initializeLoadingBall('particle-canvas');
+  }
+});
+</script>

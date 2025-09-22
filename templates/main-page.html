@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ content.translated_content.language_code }}">
+<head>
+  <meta charset="utf-8">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}afrAIca - Africa's Executive AI Intelligence{% endif %}</title>
+  {% if content.meta_description %}<meta name="description" content="{{ content.meta_description }}">{% else %}<meta name="description" content="afrAIca - Africa's Executive AI Intelligence Infrastructure. Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms.">{% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="AI, Africa, artificial intelligence, executive, infrastructure, sovereign">
+  <meta name="author" content="afrAIca PTY LTD">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="afrAIca - Africa's Executive AI Intelligence">
+  <meta property="og:description" content="Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms for leaders building durable advantage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afraica.co.za">
+  <meta property="og:image" content="{{ get_asset_url('./images/afrAIca-text.png') }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ get_asset_url('./images/afrAIca-small.png') }}" type="image/png">
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  {{ require_css(get_asset_url("../css/main.css")) }}
+
+  {{ standard_header_includes }}
+</head>
+<body>
+  {% dnd_area "main_content" %}
+    {% dnd_module path="../modules/main-content" %}
+    {% end_dnd_module %}
+  {% end_dnd_area %}
+
+  <!-- Scripts -->
+  {{ require_js(get_asset_url("../js/main.js")) }}
+  {{ standard_footer_includes }}
+</body>
+</html>

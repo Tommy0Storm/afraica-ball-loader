@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="public, max-age=3600">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <title>afrAIca - Loading | Africa's Executive AI Intelligence</title>
+  <meta name="description" content="afrAIca - Africa's Executive AI Intelligence Loading Page">
+  <meta name="author" content="afrAIca PTY LTD">
+  <meta property="og:title" content="afrAIca - Africa's Executive AI Intelligence">
+  <meta property="og:description" content="Vendor-agnostic strategy, production-grade delivery, and sovereign-aware platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afraica.co.za">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      font-family: 'Google Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ball-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+    canvas {
+      border-radius: 50%;
+    }
+    .progress-bar {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00f5ff, #ff00aa);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .loading-text {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-label="afrAIca Loading Animation">
+    <div class="ball-container">
+      <canvas id="ballCanvas" width="400" height="400" aria-label="afrAIca animated particle ball" title="Interactive ball animation displaying afrAIca branding"></canvas>
+      <div class="progress-bar" role="progressbar" aria-label="Loading progress">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="loading-text" id="loadingText" aria-live="polite">Initializing afrAIca...</div>
+    </div>
+    <div class="sr-only">
+      <h1>afrAIca - Africa's Executive AI Intelligence</h1>
+      <p>Loading interactive experience. Please wait while we prepare your AI intelligence platform.</p>
+    </div>
+  </main>
+  <script>
+    // Check if already loaded to prevent loader loops
+    if (sessionStorage.getItem('afraica-loaded') === 'true') {
+      window.location.replace('https://afraica.co.za/main-page');
+    }
+
+    // Ball loader implementation
+    const canvas = document.getElementById('ballCanvas');
+    const ctx = canvas.getContext('2d');
+    const progressFill = document.getElementById('progressFill');
+    const loadingText = document.getElementById('loadingText');
+
+    const PARTICLE_COUNT = 15000;
+    const PARTICLE_COLORS = [
+      { r: 255, g: 255, b: 255 },
+      { r: 222, g: 49, b: 99 },
+      { r: 75, g: 85, b: 99 }
+    ];
+    let rigidity = 1;
+    let particles = [];
+    const mouse = { x: null, y: null };
+    let animationFrameId = null;
+    let rotationX = 0, rotationY = 0;
+    let targetRotationX = 0, targetRotationY = 0;
+    let startTime = null;
+    let isSpinning = true;
+    let explosionStartTime = null;
+    let isExploding = false;
+    const SPIN_DURATION = 5;
+    const EXPLOSION_DURATION = 3;
+
+    const createParticles = (width, height) => {
+      particles = [];
+      const textCanvas = document.createElement('canvas');
+      const textCtx = textCanvas.getContext('2d');
+      const FONT_SIZE = 150;
+      textCanvas.width = 1024; textCanvas.height = 256;
+      textCtx.font = `bold ${FONT_SIZE}px Arial, sans-serif`;
+      textCtx.textAlign = 'center'; textCtx.textBaseline = 'middle';
+      const metricsAfr = textCtx.measureText('afr');
+      const metricsAI = textCtx.measureText('AI');
+      const totalWidth = metricsAfr.width + metricsAI.width + textCtx.measureText('ca').width;
+      const startX = (textCanvas.width - totalWidth) / 2;
+      textCtx.fillStyle = 'blue'; textCtx.fillText('afr', startX + metricsAfr.width / 2, 128);
+      textCtx.fillStyle = 'red'; textCtx.fillText('AI', startX + metricsAfr.width + metricsAI.width / 2, 128);
+      textCtx.fillStyle = 'green'; textCtx.fillText('ca', startX + metricsAfr.width + metricsAI.width + textCtx.measureText('ca').width / 2, 128);
+      const imageData = textCtx.getImageData(0, 0, textCanvas.width, textCanvas.height);
+
+      const sphereRadius = 1;
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      const textMapRotY = -Math.PI / 2;
+      const cosTextMapY = Math.cos(textMapRotY), sinTextMapY = Math.sin(textMapRotY);
+      const finalRotX = Math.PI;
+      const finalRotY = Math.PI;
+      const cosFinalX = Math.cos(finalRotX), sinFinalX = Math.sin(finalRotX);
+      const cosFinalY = Math.cos(finalRotY), sinFinalY = Math.sin(finalRotY);
+
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const y = 1 - (i / (PARTICLE_COUNT - 1)) * 2;
+        const radiusAtY = Math.sqrt(1 - y * y);
+        const theta = goldenAngle * i;
+        const x = Math.cos(theta) * radiusAtY, z = Math.sin(theta) * radiusAtY;
+
+        const textMapX = x * cosTextMapY - z * sinTextMapY;
+        const textMapZ = x * sinTextMapY + z * cosTextMapY;
+        const textMapY = y;
+        const particleLongitude = Math.atan2(textMapZ, textMapX);
+        const particleLatitude = Math.acos(textMapY);
+        let isTextParticle = false, particleColor;
+        const textBandHeight = 0.4;
+        const textBandStartLat = Math.PI * (1 - textBandHeight) / 2;
+        const textBandEndLat = Math.PI * (1 + textBandHeight) / 2;
+
+        if (particleLatitude > textBandStartLat && particleLatitude < textBandEndLat) {
+          const u = (particleLongitude + Math.PI) / (2 * Math.PI);
+          const v = (particleLatitude - textBandStartLat) / (textBandEndLat - textBandStartLat);
+          const textX = Math.floor(u * textCanvas.width), textY = Math.floor(v * textCanvas.height);
+          const pixelIndex = (textY * textCanvas.width + textX) * 4;
+          if (imageData.data[pixelIndex + 3] > 128) {
+            isTextParticle = true;
+            particleColor = imageData.data[pixelIndex] > 128 ? PARTICLE_COLORS[1] : PARTICLE_COLORS[0];
+          }
+        }
+        if (!isTextParticle) {
+          particleColor = Math.random() < 0.15 ? PARTICLE_COLORS[1] : PARTICLE_COLORS[2];
+        }
+
+        const x1 = x * cosFinalY - z * sinFinalY;
+        const z1 = x * sinFinalY + z * cosFinalY;
+        const y2 = y * cosFinalX - z1 * sinFinalX;
+        const z2 = y * sinFinalX + z1 * cosFinalX;
+        const x2 = x1;
+
+        const baseX3d = x2 * sphereRadius;
+        const baseY3d = y2 * sphereRadius;
+        const baseZ3d = z2 * sphereRadius;
+
+        const scale = Math.min(width, height) * 0.225;
+        const ballCenterY = height / 2 + 38;
+        particles.push({
+          x: (baseX3d * scale) + width / 2, y: (baseY3d * scale) + ballCenterY,
+          baseX: (baseX3d * scale) + width / 2, baseY: (baseY3d * scale) + ballCenterY,
+          baseX3d, baseY3d, baseZ3d,
+          vx: 0, vy: 0, z: baseZ3d, radius: 1, color: particleColor, density: Math.random() * 20 + 10,
+        });
+      }
+    };
+
+    const updateProgress = (progress) => {
+      progressFill.style.width = progress + '%';
+      progressFill.setAttribute('aria-valuenow', progress);
+    };
+
+    const animate = () => {
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const canvasWidth = canvas.width / dpr, canvasHeight = canvas.height / dpr;
+
+      if (!startTime) startTime = performance.now();
+      const elapsed = (performance.now() - startTime) / 1000;
+
+      // Update progress bar
+      const progress = Math.min((elapsed / (SPIN_DURATION + EXPLOSION_DURATION)) * 100, 100);
+      updateProgress(progress);
+
+      if (elapsed < SPIN_DURATION && isSpinning) {
+        targetRotationY += 0.05;
+        loadingText.textContent = 'Spinning up AI systems...';
+      } else if (isSpinning) {
+        isSpinning = false;
+        explosionStartTime = performance.now();
+        isExploding = true;
+        loadingText.textContent = 'Deploying intelligence...';
+      }
+
+      if (isExploding && explosionStartTime) {
+        const explosionElapsed = (performance.now() - explosionStartTime) / 1000;
+        if (explosionElapsed >= EXPLOSION_DURATION) {
+          isExploding = false;
+          rigidity = 1;
+          sessionStorage.setItem('afraica-loaded', 'true');
+          loadingText.textContent = 'Welcome to afrAIca';
+          setTimeout(() => {
+            window.location.replace('https://afraica.co.za/main-page');
+          }, 500);
+        }
+      }
+
+      rotationY += (targetRotationY - rotationY) * 0.05;
+      rotationX += (targetRotationX - rotationX) * 0.05;
+
+      const scale = Math.min(canvasWidth, canvasHeight) * 0.225;
+      const centerX = canvasWidth / 2, centerY = canvasHeight / 2 + 38;
+      const cosX = Math.cos(rotationX), sinX = Math.sin(rotationX);
+      const cosY = Math.cos(rotationY), sinY = Math.sin(rotationY);
+      particles.sort((a, b) => a.z - b.z);
+
+      particles.forEach(p => {
+        let x1 = p.baseX3d * cosY - p.baseZ3d * sinY, z1 = p.baseX3d * sinY + p.baseZ3d * cosY;
+        let y2 = p.baseY3d * cosX - z1 * sinX, z2 = p.baseY3d * sinX + z1 * cosX;
+        p.z = z2; p.baseX = x1 * scale + centerX; p.baseY = y2 * scale + centerY;
+
+        if (!isExploding && rigidity >= 1.0) {
+          p.x = p.baseX; p.y = p.baseY; p.vx = 0; p.vy = 0;
+        } else {
+          if (isExploding) {
+            const dx = p.x - centerX;
+            const dy = p.y - centerY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance > 0) {
+              const explosionForce = 15;
+              p.vx += (dx / distance) * explosionForce;
+              p.vy += (dy / distance) * explosionForce;
+            }
+          }
+          p.x += p.vx; p.y += p.vy;
+        }
+
+        const opacity = 0.4 + ((p.z + 1) / 2) * 0.6;
+        p.radius = ((p.z + 1.5) / 2.5) * 2 + 0.5;
+        if (p.color.r > 100 || p.color.g > 100) {
+          ctx.shadowBlur = 15; ctx.shadowColor = `rgb(${p.color.r}, ${p.color.g}, ${p.color.b})`;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${opacity})`;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    const handleResize = () => {
+      cancelAnimationFrame(animationFrameId);
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      const canvasWidth = canvas.width / dpr, canvasHeight = canvas.height / dpr;
+      createParticles(canvasWidth, canvasHeight);
+      animate();
+    };
+
+    // Initialize progress bar
+    progressFill.setAttribute('role', 'progressbar');
+    progressFill.setAttribute('aria-valuemin', '0');
+    progressFill.setAttribute('aria-valuemax', '100');
+    progressFill.setAttribute('aria-valuenow', '0');
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  </script>
+</body>
+</html>

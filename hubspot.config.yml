@@ -1,0 +1,10 @@
+defaultPortal: afrAIca
+portals:
+  - name: afrAIca
+    portalId: 49256631
+    env: prod
+    authType: personalaccesskey
+    accountId: 49256631
+    personalAccessKey: YOUR_HUBSPOT_TOKEN_HERE
+    allowUsageTracking: false
+    accountType: STANDARD
