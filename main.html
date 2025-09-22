@@ -26,6 +26,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   
+  <!-- Critical CSS - Force hero visibility immediately -->
+  <style>
+    /* URGENT: Override any animations that hide hero content */
+    .hero .animate-fade-up, .hero__title.animate-fade-up, .hero__title-highlight {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      visibility: visible !important;
+      animation: none !important;
+    }
+  </style>
+
   <!-- CSS -->
   <link rel="stylesheet" href="./src/styles/base/tokens.css">
   <link rel="stylesheet" href="./src/styles/base/reset.css">
@@ -207,14 +218,28 @@
       transform: none !important; /* Remove any transforms that might hide text */
     }
 
-    /* Force visibility for all hero title elements including animations */
+    /* CRITICAL: Override animations.css to force hero title visibility immediately */
     .hero__title.animate-fade-up,
     .hero__title-highlight.animate-fade-up,
-    .hero__title .hero__title-highlight {
+    .hero__title .hero__title-highlight,
+    .hero .animate-fade-up {
       opacity: 1 !important;
       visibility: visible !important;
-      transform: none !important;
+      transform: translateY(0) !important; /* Override the translateY(30px) from animations.css */
       animation: none !important;
+      animation-delay: 0s !important;
+    }
+
+    /* Override the base animate-fade-up class for hero section specifically */
+    .hero .animate-fade-up {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Force immediate visibility for any hero child elements */
+    .hero * {
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     /* Ensure parent elements don't blur the highlight text */
