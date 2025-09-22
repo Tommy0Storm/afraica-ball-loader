@@ -121,7 +121,7 @@
       background: linear-gradient(90deg, #C8102E 0%, #ffffff 50%, #C8102E 100%);
       border-radius: 1px;
       width: 0%;
-      transition: width 15s linear;
+      transition: width 10s linear;
       box-shadow: 0 0 10px rgba(200, 16, 46, 0.5);
     }
 
@@ -202,10 +202,10 @@
         progressBar.style.width = '100%';
       }, 100);
 
-      // Hide loading screen after exactly 15 seconds
+      // Hide loading screen after exactly 10 seconds (8s spin + 2s explosion)
       loadingTimeout = setTimeout(() => {
         hideLoadingScreen();
-      }, 15000);
+      }, 10000);
     }
 
     function hideLoadingScreen() {

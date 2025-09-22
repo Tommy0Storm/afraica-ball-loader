@@ -39,8 +39,8 @@ export function initializeLoadingBall(canvasId) {
   let isSpinning = true;
   let explosionStartTime = null;
   let isExploding = false;
-  const SPIN_DURATION = 5; // seconds
-  const EXPLOSION_DURATION = 3; // seconds
+  const SPIN_DURATION = 8; // seconds - longer spin
+  const EXPLOSION_DURATION = 2; // seconds - shorter explosion, quick redirect
 
   const createParticles = (width, height) => {
     // Clear existing particles to prevent accumulation
@@ -156,14 +156,13 @@ export function initializeLoadingBall(canvasId) {
     if (isExploding && explosionStartTime) {
       const explosionElapsed = (performance.now() - explosionStartTime) / 1000;
       if (explosionElapsed >= EXPLOSION_DURATION) {
-        isExploding = false;
-        rigidity = 1; // Return to rigid formation
+        // Stop animation completely
+        cancelAnimationFrame(animationFrameId);
 
-        // Mark loading as complete and redirect to main page after explosion
+        // Mark loading as complete and redirect immediately
         sessionStorage.setItem('afraica-loaded', 'true');
-        setTimeout(() => {
-          window.location.replace('./main.html');
-        }, 500); // Small delay for smooth transition
+        window.location.replace('./main.html');
+        return; // Exit animation loop
       }
     }
 
