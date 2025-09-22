@@ -209,6 +209,12 @@
       loadingTimeout = setTimeout(() => {
         hideLoadingScreen();
       }, 10000);
+
+      // Fallback redirect after 12 seconds if ball loader fails
+      setTimeout(() => {
+        console.log('Fallback redirect to main.html');
+        window.location.href = './main.html';
+      }, 12000);
     }
 
     function hideLoadingScreen() {
@@ -246,9 +252,11 @@
       }
     });
 
-    // Optional: Allow skip by clicking (for development/testing)
-    // Uncomment the line below to enable skip functionality
-    // document.addEventListener('click', hideLoadingScreen);
+    // Allow skip by clicking anywhere
+    document.addEventListener('click', () => {
+      console.log('User clicked - redirecting to main.html');
+      window.location.href = './main.html';
+    });
   </script>
 </body>
 </html>

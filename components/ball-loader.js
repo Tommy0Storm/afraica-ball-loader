@@ -155,17 +155,23 @@ export function initializeLoadingBall(canvasId) {
     // Handle explosion phase
     if (isExploding && explosionStartTime) {
       const explosionElapsed = (performance.now() - explosionStartTime) / 1000;
+      console.log('Explosion progress:', explosionElapsed, '/', EXPLOSION_DURATION);
+
       if (explosionElapsed >= EXPLOSION_DURATION) {
         // Stop animation completely
         cancelAnimationFrame(animationFrameId);
 
         // Mark loading as complete and redirect immediately
         sessionStorage.setItem('afraica-loaded', 'true');
-        console.log('Redirecting to main.html...');
+        console.log('Animation complete! Redirecting to main.html...');
 
-        // Force redirect using multiple methods
+        // Multiple redirect methods for reliability
+        window.location.href = './main.html';
         setTimeout(() => {
-          window.location = 'main.html';
+          window.location.replace('./main.html');
+        }, 50);
+        setTimeout(() => {
+          window.location = './main.html';
         }, 100);
 
         return; // Exit animation loop
